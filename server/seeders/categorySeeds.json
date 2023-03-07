@@ -1,12 +1,15 @@
 [
   {
+    "name": "Animals"
+  },
+  {
     "name": "Classical"
   },
   {
-    "name": "Futurism"
+    "name": "Fantasy"
   },
   {
-    "name": "Nature"
+    "name": "Futurism"
   },
   {
     "name": "Pop"
@@ -16,5 +19,8 @@
   },
   {
     "name": "Tech"
+  },
+  {
+    "name": "Tribal Art"
   }
 ]
