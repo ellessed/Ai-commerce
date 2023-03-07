@@ -1,0 +1,30 @@
+[
+  {
+    "title": "Yamaha DX7",
+    "description": "An 80s icon, the Original Digital Keyboard",
+    "image": "dx7.png",
+    "price": 1200,
+    "category": "Keyboards"
+  },
+  {
+    "title": "Roland TR-707",
+    "description": "The original Roland Drum machine that was made in the 80s",
+    "image": "tr-707.png",
+    "price": 2500,
+    "category": "Keyboards"
+  },
+  {
+    "title": "Roland D50",
+    "description": "Another 80s icon, Roland's response to the Yamaha DX7",
+    "image": "d50.png",
+    "price": 1400,
+    "category": "Keyboards"
+  },
+  {
+    "title": "Fender Stratocaster",
+    "description": "Arguably the most iconic guitar in the world",
+    "image": "fender_strat.png",
+    "price": 800,
+    "category": "Guitars"
+  }
+]

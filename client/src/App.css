@@ -1,0 +1,195 @@
+.App {
+  text-align: center;
+}
+
+.logo {
+  height: 80px;
+  pointer-events: none;
+}
+
+.wrapper {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.header {
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.logo-section {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.cart-section {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.login-section {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: calc(10px + 2vmin);
+}
+
+.container {
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex: 1;
+}
+
+.App-link {
+  margin: 0px 10px;
+  color: #61dafb;
+}
+
+.section-title {
+  font-size: calc(10px + 2vmin);
+  color: white;
+  margin: 0;
+}
+
+.cart-items {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.w-75 {
+  width: 75%;
+}
+
+.w-25 {
+  width: 25%;
+}
+
+.border {
+  border: 1px solid #61dafb; 
+}
+
+.m-1 {
+  margin: 1px;
+}
+
+.m-2 {
+  margin: 2px;
+}
+
+.m-3 {
+  margin: 3px;
+}
+
+.m-4 {
+  margin: 4px;
+}
+
+.m-5 {
+  margin: 5px;
+}
+
+.m-10 {
+  margin: 10px;
+}
+
+.p-5 {
+  padding: 5px;
+}
+
+.p-5 {
+  padding: 10px;
+}
+
+.mr-5 {
+  margin-right: 5px;
+}
+
+.footer {
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  min-height: 50px;
+}
+
+.flex {
+  display: flex;
+}
+
+.text-sm {
+  font-size: 0.6em;
+}
+
+.text-lg {
+  font-size: 0.9em;
+}
+
+.product-price {
+  display: flex;
+  justify-content: end;
+  height: 60px;
+  align-items: center;
+}
+
+.btn {
+  background-color: rgb(195, 195, 188);
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 15%;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background-color: #61dafb;
+}
+
+.product-details {
+  width: 50%;
+}
+.product-image {
+  width: 400px;
+  height: auto;
+}
+
+.product-description {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  
+  height: auto;
+  min-height: 150px;
+}
