@@ -73,7 +73,7 @@ function App() {
                     localStorage.getItem("id_token") ? (
                       <Checkout />
                     ) : (
-                      <Navigate to="/login" />
+                      <Navigate to="/login" state={{ from: "/checkout" }} />
                     )
                   }
                 />
