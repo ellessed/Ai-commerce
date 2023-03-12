@@ -15,6 +15,9 @@ import { FaSearch } from "react-icons/fa";
 import { SAVE_ARTWORK } from "../../utils/mutations";
 import { useMutation } from "@apollo/client";
 
+//import auth
+import Auth from "../../utils/auth";
+
 const Home = () => {
   const { onAddToCart } = useCart();
   const [input, setInput] = useState("");
@@ -133,8 +136,22 @@ const Home = () => {
         </div>
       </div>
       <div className="w-25 border m-2 p-5">
-        <div className="section-title">Browse the Shop</div>
-        <CategoriesLinks />
+        {Auth.loggedIn() ? (
+          <>
+            <h1>Recent Artwork</h1>
+            {posts.map((post, index) => (
+              <div key={index}>
+                <img src={post.imageUrl} alt="input to image" />
+                <p>{post.artName}</p>
+              </div>
+            ))}
+          </>
+        ) : (
+          <>
+            <h1>Browse the Shop</h1>
+            <CategoriesLinks />
+          </>
+        )}
       </div>
     </>
   );
