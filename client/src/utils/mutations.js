@@ -24,42 +24,26 @@ export const ADD_USER = gql`
   }
 `;
 
-export const ADD_THOUGHT = gql`
-  mutation addThought($thoughtText: String!) {
-    addThought(thoughtText: $thoughtText) {
-      _id
-      thoughtText
-      thoughtAuthor
-      createdAt
-      comments {
-        _id
-        commentText
-      }
-    }
-  }
-`;
-
-export const ADD_COMMENT = gql`
-  mutation addComment($thoughtId: ID!, $commentText: String!) {
-    addComment(thoughtId: $thoughtId, commentText: $commentText) {
-      _id
-      thoughtText
-      thoughtAuthor
-      createdAt
-      comments {
-        _id
-        commentText
-        createdAt
-      }
-    }
-  }
-`;
-
 export const CHECKOUT = gql`
   mutation checkout($amount: Int) {
     checkout(amount: $amount) {
       id
       client_secret
+    }
+  }
+`;
+
+export const SAVE_ARTWORK = gql`
+  mutation SaveArtwork(
+    $productName: String!
+    $imageUrl: String!
+    $price: Int!
+  ) {
+    saveArtwork(productName: $productName, imageUrl: $imageUrl, price: $price) {
+      id
+      productName
+      imageUrl
+      price
     }
   }
 `;
