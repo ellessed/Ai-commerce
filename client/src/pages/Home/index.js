@@ -20,15 +20,16 @@ const Home = () => {
   const [input, setInput] = useState("");
   const [imageUrl, setImageUrl] = useState("");
   const [artName, setArtName] = useState("");
+  const [price, setPrice] = useState("");
   const [posts, setPosts] = useState([]);
   const [saveArtwork] = useMutation(SAVE_ARTWORK);
   const onInputChange = (event) => {
     setInput(event.target.value);
+    const inputWords = input.trim().split(/\s+/).length;
+    setPrice(inputWords * 10);
   };
 
   const onButtonSubmit = () => {
-
-    
     //generate a random adjective or noun
     const adjectives = [
       "mystical",
@@ -63,7 +64,11 @@ const Home = () => {
       )
       .then((response) => {
         const newImageURL = response.data.data[0].url;
-        const post = { artName: newArtName, imageUrl: newImageURL };
+        const post = {
+          artName: newArtName,
+          imageUrl: newImageURL,
+          price: price,
+        };
         //get recent searches from local storage
         const posts = JSON.parse(localStorage.getItem("posts")) || [];
         //push recent search
@@ -84,6 +89,7 @@ const Home = () => {
       variables: {
         productName: post.artName,
         imageUrl: post.imageUrl,
+        price: post.price,
       },
     })
       .then((response) => console.log("Artwork saved successfully"))
@@ -115,7 +121,12 @@ const Home = () => {
             </button>
           </div>
           {imageUrl && <img src={imageUrl} alt="input to image" />}
-          {artName && <p>{artName}</p>}
+          {artName && (
+            <>
+              <p>{artName}</p>
+              <p>Price: ${price}</p>
+            </>
+          )}
           <button onClick={() => onAddToCartClick(posts.length - 1)}>
             Add to Cart
           </button>

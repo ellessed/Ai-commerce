@@ -40,7 +40,6 @@ export const SAVE_ARTWORK = gql`
     $price: Int!
   ) {
     saveArtwork(productName: $productName, imageUrl: $imageUrl, price: $price) {
-      id
       productName
       imageUrl
       price

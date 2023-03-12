@@ -13,6 +13,7 @@ const typeDefs = gql`
     _id: ID
     productName: String
     imageUrl: String
+    price: Int
   }
 
   type Category {
@@ -63,7 +64,7 @@ const typeDefs = gql`
       total: Int!
     ): Order
     checkout(amount: Int): Payment
-    saveArtwork(productName: String!, imageUrl: String!, price: Int): Product!
+    saveArtwork(productName: String!, imageUrl: String!, price: Int!): Product!
   }
 `;
 
