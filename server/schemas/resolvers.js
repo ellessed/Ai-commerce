@@ -101,6 +101,11 @@ const resolvers = {
         throw new AuthenticationError("Payment Failed!");
       }
     },
+    saveArtwork: async (parent, { productName, imageUrl, price }) => {
+      const product = new Product({ productName, imageUrl, price });
+      await product.save();
+      return product;
+    },
   },
 };
 
