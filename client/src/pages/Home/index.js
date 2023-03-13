@@ -82,23 +82,21 @@ const Home = () => {
           imageUrl: newImageURL,
           price: price,
         };
-        const token = Auth.loggedIn() ? Auth.getToken() : null;
-        if (!token) {
-          return false;
-        }
-
-        try {
-          const { data } = saveArtwork({
-            variables: { artData: { ...artData } },
-          });
-        } catch (err) {
-          console.error(err);
-        }
-        setArtName(newArtName);
         setImageUrl(newImageURL);
+        setArtName(newArtName);
         setInput("");
+        if (Auth.loggedIn()) {
+          try {
+            const { data } = saveArtwork({
+              variables: { artData: { ...artData } },
+            });
+          } catch (err) {
+            console.error(err);
+          }
+        }
       })
       .catch((err) => console.log(err));
+
   };
   useEffect(() => {
     setArtName("");
