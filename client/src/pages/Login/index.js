@@ -11,7 +11,7 @@ const Login = (props) => {
 
   const { state } = useLocation();
   const navigate = useNavigate();
-  const { from } = state || null;
+  const { from = null } = state || {};
 
   // update state based on form input changes
   const handleChange = (event) => {

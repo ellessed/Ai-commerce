@@ -1,5 +1,5 @@
 // UI Components
-// import ProductCard from "../../components/ProductCard";
+import ProductCard from "../../components/ProductCard";
 import CategoriesLinks from "../../components/CategoriesLinks";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
@@ -13,7 +13,10 @@ import { useCart } from "../../context/CartContext";
 import { FaSearch } from "react-icons/fa";
 //save artwork mutation
 import { SAVE_ARTWORK } from "../../utils/mutations";
-import { useMutation } from "@apollo/client";
+import { useQuery, useMutation } from "@apollo/client";
+
+//get user
+import { QUERY_ME } from "../../utils/queries";
 
 //import auth
 import Auth from "../../utils/auth";
@@ -21,10 +24,17 @@ import Auth from "../../utils/auth";
 const Home = () => {
   const { onAddToCart } = useCart();
   const [input, setInput] = useState("");
-  const [imageUrl, setImageUrl] = useState("");
+  //create state for holding the generated name
   const [artName, setArtName] = useState("");
+  // create state for holding generated price
   const [price, setPrice] = useState("");
-  const [posts, setPosts] = useState([]);
+
+  const [imageUrl, setImageUrl] = useState("");
+
+  //get the current user's data
+  const { data } = useQuery(QUERY_ME);
+  const userData = data?.me || {};
+
   const [saveArtwork] = useMutation(SAVE_ARTWORK);
   const onInputChange = (event) => {
     setInput(event.target.value);
@@ -67,51 +77,32 @@ const Home = () => {
       )
       .then((response) => {
         const newImageURL = response.data.data[0].url;
-        const post = {
-          artName: newArtName,
+        const artData = {
+          productName: newArtName,
           imageUrl: newImageURL,
           price: price,
         };
-        //get recent searches from local storage
-        const posts = JSON.parse(localStorage.getItem("posts")) || [];
-        //push recent search
-        posts.push(post);
-        //save recent search
-        localStorage.setItem("posts", JSON.stringify(posts));
-        setPosts([...posts, post]);
-        setImageUrl(newImageURL);
+        const token = Auth.loggedIn() ? Auth.getToken() : null;
+        if (!token) {
+          return false;
+        }
+
+        try {
+          const { data } = saveArtwork({
+            variables: { artData: { ...artData } },
+          });
+        } catch (err) {
+          console.error(err);
+        }
         setArtName(newArtName);
+        setImageUrl(newImageURL);
+        setInput("");
       })
       .catch((err) => console.log(err));
   };
-
-  //save image added to basket in the database
-  const onAddToCartClick = (index) => {
-    const post = posts[index];
-    saveArtwork({
-      variables: {
-        productName: post.artName,
-        imageUrl: post.imageUrl,
-        price: post.price,
-      },
-    })
-      .then((response) => console.log("Artwork saved successfully"))
-      .catch((error) => console.log("Error saving artwork: ", error));
-    onAddToCart(index);
-  };
-
   useEffect(() => {
     setArtName("");
   }, [input]);
-
-  useEffect(() => {
-    const postsFromStorage = JSON.parse(localStorage.getItem("posts")) || [];
-    setPosts(postsFromStorage);
-  }, []);
-
-  // const { loading, data } = useQuery(QUERY_FEATURED_PRODUCTS);
-  // const products = data?.products || [];
-
   return (
     <>
       <div className="w-75 border m-2 p-5">
@@ -130,28 +121,15 @@ const Home = () => {
               <p>Price: ${price}</p>
             </>
           )}
-          <button onClick={() => onAddToCartClick(posts.length - 1)}>
-            Add to Cart
-          </button>
+          <button onClick={onAddToCart}>Add to Cart</button>
         </div>
       </div>
       <div className="w-25 border m-2 p-5">
-        {Auth.loggedIn() ? (
-          <>
-            <h1>Recent Artwork</h1>
-            {posts.map((post, index) => (
-              <div key={index}>
-                <img src={post.imageUrl} alt="input to image" />
-                <p>{post.artName}</p>
-              </div>
-            ))}
-          </>
-        ) : (
-          <>
-            <h1>Browse the Shop</h1>
-            <CategoriesLinks />
-          </>
-        )}
+        {userData?.recentArt?.map((art, index) => (
+          <div key={index}>
+            <img src={art.imageUrl} alt={`generated ${art.productName}`} />
+          </div>
+        ))}
       </div>
     </>
   );

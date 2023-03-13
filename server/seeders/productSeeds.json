@@ -1,65 +1,62 @@
 [
   {
-    "title": "Mardi Gras",
-    "description": "The Mysterious Mardi Gras King",
-    "image": "dx7.png",
-    "price": 1500,
-    "category": "Masterpieces"
+    "productName": "moon",
+    "imageUrl": "1.webp",
+    "price": "1000"
   },
   {
-    "title": "Mardi Gras Queen",
-    "description": "The Magestic Queen of Mardi Gras",
-    "image": "tr-707.png",
-    "price": 2000,
-    "category": "Masterpieces"
+    "productName": "telescope",
+    "imageUrl": "2.webp",
+    "price": "1000"
   },
   {
-    "title": "Mardi Gras Princess",
-    "description": "The Dainty Princess of Mardi Gras King and Queen",
-    "image": "d50.png",
-    "price": 1400,
-    "category": "Masterpieces"
+    "productName": "vr",
+    "imageUrl": "3.webp",
+    "price": "1000"
   },
   {
-    "title": "OtherWorld",
-    "description": "Life on Planet Json",
-    "image": "fender_strat.png",
-    "price": 5,
-    "category": "Futurism"
+    "productName": "mask1",
+    "imageUrl": "4.webp",
+    "price": "1000"
   },
   {
-    "title": "The Reaility Of Reality",
-    "description": "Tech Is The Future..",
-    "image": "fender_strat.png",
-    "price": 5,
-    "category": "Tech"
+    "productName": "mask2",
+    "imageUrl": "5.webp",
+    "price": "1000"
   },
   {
-    "title": "I See No SpaceShips",
-    "description": "Knowledge Vs Vision",
-    "image": "fender_strat.png",
-    "price": 5,
-    "category": "Fantasy"
+    "productName": "mask3",
+    "imageUrl": "6.webp",
+    "price": "1000"
   },
   {
-    "title": "The Great GrandMother Of Gatsby",
-    "description": "Smart Cat",
-    "image": "fender_strat.png",
-    "price": 5,
-    "category": "Animals"
+    "productName": "cat holmes",
+    "imageUrl": "7.webp",
+    "price": "1000"
   },
   {
-    "title": "Jasons Dream",
-    "description": "What Jasons Dreams Look Like",
-    "image": "fender_strat.png",
-    "price": 5,
-    "category": "Animals, Pop Art"
+    "productName": "cat",
+    "imageUrl": "8.webp",
+    "price": "1000"
   },
   {
-    "title": "Coffee Lover",
-    "description": "Pandas Favourite Drink",
-    "image": "fender_strat.png",
-    "price": 5,
-    "category": "Food and Drinks"
+    "productName": "coffee",
+    "imageUrl": "9.webp",
+    "price": "1000"
+  },
+  {
+    "productName": "moon",
+    "imageUrl": "10.webp",
+    "price": "1000"
+  },
+  {
+    "productName": "madonna robot",
+    "imageUrl": "12.webp",
+    "price": "1000"
+  },
+  {
+    "productName": "thinking",
+    "imageUrl": "13.webp",
+    "price": "1000"
   }
 ]
