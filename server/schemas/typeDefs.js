@@ -7,15 +7,20 @@ const typeDefs = gql`
     email: String
     password: String
     orders: [Order]!
+    recentArt: [Artwork]
   }
 
   type Product {
     _id: ID
-    title: String
-    description: String
-    image: String
+    productName: String
+    imageUrl: String
     price: Int
-    createdAt: String
+  }
+
+  type Artwork {
+    productName: String!
+    imageUrl: String!
+    price: Int!
   }
 
   type Category {
@@ -44,6 +49,12 @@ const typeDefs = gql`
     client_secret: String
   }
 
+  input ArtInput {
+    productName: String
+    imageUrl: String
+    price: Int
+  }
+
   type Query {
     users: [User]
     user(username: String!): User
@@ -66,6 +77,7 @@ const typeDefs = gql`
       total: Int!
     ): Order
     checkout(amount: Int): Payment
+    saveArtwork(artData: ArtInput!): User
   }
 `;
 

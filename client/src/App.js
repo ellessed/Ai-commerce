@@ -5,7 +5,12 @@ import {
   createHttpLink,
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import CartProvider from "./context/CartContext";
@@ -62,8 +67,16 @@ function App() {
                 <Route path="/profiles/:username" element={<Profile />} />
                 <Route path="/category/:category" element={<ProductList />} />
                 <Route path="/product/:productId" element={<Product />} />
-
-                <Route path="/checkout" element={<Checkout />} />
+                <Route
+                  path="/checkout"
+                  element={
+                    localStorage.getItem("id_token") ? (
+                      <Checkout />
+                    ) : (
+                      <Navigate to="/login" state={{ from: "/checkout" }} />
+                    )
+                  }
+                />
               </Routes>
             </Layout>
           </Router>

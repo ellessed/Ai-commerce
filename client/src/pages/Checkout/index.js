@@ -1,5 +1,5 @@
 import React from "react";
-import { useCart } from "../context/CartContext";
+import { useCart } from "../../context/CartContext";
 import {
   CardNumberElement,
   CardExpiryElement,
@@ -9,7 +9,7 @@ import {
 } from "@stripe/react-stripe-js";
 
 import { useMutation } from "@apollo/client";
-import { CHECKOUT } from "../utils/mutations";
+import { CHECKOUT } from "../../utils/mutations";
 
 const Checkout = () => {
   const { cartItems } = useCart();
