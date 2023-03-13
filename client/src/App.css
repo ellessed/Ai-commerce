@@ -1,3 +1,11 @@
+/* Make root here it will import by default */
+:root {
+--light: #FBFCFD;
+--dark: #372141;
+--h-font: 'Homenaje', sans-serif;
+--b-font:'Rubik', sans-serif;
+}
+
 .App {
   text-align: center;
 }
