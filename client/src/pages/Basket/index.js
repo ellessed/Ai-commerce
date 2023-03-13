@@ -1,9 +1,9 @@
 // UI Components
-import BasketCard from '../components/BasketCard'
-import CheckoutLinks from '../components/CheckoutLinks'
+import BasketCard from '../../components/BasketCard'
+import CheckoutLinks from '../../components/CheckoutLinks'
 
 // Shopping Cart
-import { useCart } from '../context/CartContext'
+import { useCart } from '../../context/CartContext'
 
 const Basket = () => {
   
