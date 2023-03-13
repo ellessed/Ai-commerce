@@ -34,15 +34,16 @@ export const CHECKOUT = gql`
 `;
 
 export const SAVE_ARTWORK = gql`
-  mutation SaveArtwork(
-    $productName: String!
-    $imageUrl: String!
-    $price: Int!
-  ) {
-    saveArtwork(productName: $productName, imageUrl: $imageUrl, price: $price) {
-      productName
-      imageUrl
-      price
+  mutation SaveArtwork($artData: ArtInput!) {
+    saveArtwork(artData: $artData) {
+      _id
+      username
+      email
+      recentArt {
+        productName
+        imageUrl
+        price
+      }
     }
   }
 `;
