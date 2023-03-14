@@ -9,6 +9,7 @@ import axios from "axios";
 
 // Shopping Cart
 import { useCart } from "../../context/CartContext";
+import SearchBar from "../../components/SearchBar";
 
 import { FaSearch } from "react-icons/fa";
 //save artwork mutation
@@ -104,6 +105,7 @@ const Home = () => {
   return (
     <>
       <div className="w-75 border m-2 p-5">
+        <SearchBar />
         <div className="section-title">
           <h2>Search for the art you want to see!</h2>
           <div className="relative w-64">
