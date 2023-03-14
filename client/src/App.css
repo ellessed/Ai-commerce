@@ -14,6 +14,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  font-family: var(--b-font);
 }
 
 .header h1 {
@@ -52,10 +53,6 @@
 
 .w-25 {
   width: 25%;
-}
-
-.border {
-  border: 1px solid #61dafb;
 }
 
 .m-1 {
