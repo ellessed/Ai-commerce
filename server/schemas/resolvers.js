@@ -101,6 +101,19 @@ const resolvers = {
         throw new AuthenticationError("Payment Failed!");
       }
     },
+    saveArtwork: async (parent, { artData }, context) => {
+      if (context.user) {
+        const user = await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $addToSet: { recentArt: artData } },
+          { new: true, runValidators: true }
+        );
+
+        return user;
+      }
+
+      throw new AuthenticationError("You need to be logged in");
+    },
   },
 };
 

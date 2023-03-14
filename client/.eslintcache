@@ -1,1 +1,591 @@
-[{"/Users/ellessedonaldson/bootcamp/student/Ai-commerce/client/src/index.js":"1","/Users/ellessedonaldson/bootcamp/student/Ai-commerce/client/src/App.js":"2","/Users/ellessedonaldson/bootcamp/student/Ai-commerce/client/src/reportWebVitals.js":"3","/Users/ellessedonaldson/bootcamp/student/Ai-commerce/client/src/context/CartContext.js":"4","/Users/ellessedonaldson/bootcamp/student/Ai-commerce/client/src/pages/Basket/index.js":"5","/Users/ellessedonaldson/bootcamp/student/Ai-commerce/client/src/pages/Home/index.js":"6","/Users/ellessedonaldson/bootcamp/student/Ai-commerce/client/src/pages/Signup/index.js":"7","/Users/ellessedonaldson/bootcamp/student/Ai-commerce/client/src/pages/Checkout/index.js":"8","/Users/ellessedonaldson/bootcamp/student/Ai-commerce/client/src/pages/Profile/index.js":"9","/Users/ellessedonaldson/bootcamp/student/Ai-commerce/client/src/pages/ProductList/index.js":"10","/Users/ellessedonaldson/bootcamp/student/Ai-commerce/client/src/pages/Login/index.js":"11","/Users/ellessedonaldson/bootcamp/student/Ai-commerce/client/src/pages/Product/index.js":"12","/Users/ellessedonaldson/bootcamp/student/Ai-commerce/client/src/components/Layout/index.js":"13","/Users/ellessedonaldson/bootcamp/student/Ai-commerce/client/src/utils/queries.js":"14","/Users/ellessedonaldson/bootcamp/student/Ai-commerce/client/src/utils/auth.js":"15","/Users/ellessedonaldson/bootcamp/student/Ai-commerce/client/src/utils/mutations.js":"16","/Users/ellessedonaldson/bootcamp/student/Ai-commerce/client/src/components/CheckoutLinks/index.js":"17","/Users/ellessedonaldson/bootcamp/student/Ai-commerce/client/src/components/BasketCard/index.js":"18","/Users/ellessedonaldson/bootcamp/student/Ai-commerce/client/src/components/CategoriesLinks/index.js":"19","/Users/ellessedonaldson/bootcamp/student/Ai-commerce/client/src/components/ProductCard/index.js":"20","/Users/ellessedonaldson/bootcamp/student/Ai-commerce/client/src/components/Footer/index.js":"21","/Users/ellessedonaldson/bootcamp/student/Ai-commerce/client/src/components/Header/index.js":"22","/Users/ellessedonaldson/bootcamp/student/Ai-commerce/client/src/utils/textulize.js":"23","/Users/ellessedonaldson/bootcamp/student/Ai-commerce/client/src/components/SearchBar/index.js":"24"},{"size":547,"mtime":1678219033450,"results":"25","hashOfConfig":"26"},{"size":2786,"mtime":1678737427565,"results":"27","hashOfConfig":"26"},{"size":362,"mtime":1678219033461,"results":"28","hashOfConfig":"26"},{"size":1174,"mtime":1678219033446,"results":"29","hashOfConfig":"26"},{"size":899,"mtime":1678475362548,"results":"30","hashOfConfig":"26"},{"size":1077,"mtime":1678817624787,"results":"31","hashOfConfig":"26"},{"size":2664,"mtime":1678475362552,"results":"32","hashOfConfig":"26"},{"size":1499,"mtime":1678475362548,"results":"33","hashOfConfig":"26"},{"size":1386,"mtime":1678475362551,"results":"34","hashOfConfig":"26"},{"size":1388,"mtime":1678475362551,"results":"35","hashOfConfig":"26"},{"size":2509,"mtime":1678737427571,"results":"36","hashOfConfig":"26"},{"size":1318,"mtime":1678475362550,"results":"37","hashOfConfig":"26"},{"size":268,"mtime":1678475362546,"results":"38","hashOfConfig":"26"},{"size":1095,"mtime":1678737427572,"results":"39","hashOfConfig":"26"},{"size":1043,"mtime":1678737427571,"results":"40","hashOfConfig":"26"},{"size":1217,"mtime":1678737427572,"results":"41","hashOfConfig":"26"},{"size":575,"mtime":1678475362544,"results":"42","hashOfConfig":"26"},{"size":828,"mtime":1678475362542,"results":"43","hashOfConfig":"26"},{"size":606,"mtime":1678475362543,"results":"44","hashOfConfig":"26"},{"size":843,"mtime":1678475362547,"results":"45","hashOfConfig":"26"},{"size":187,"mtime":1678475362544,"results":"46","hashOfConfig":"26"},{"size":1799,"mtime":1678475362545,"results":"47","hashOfConfig":"26"},{"size":96,"mtime":1678219033466,"results":"48","hashOfConfig":"26"},{"size":115,"mtime":1678817538877,"results":"49","hashOfConfig":"26"},{"filePath":"50","messages":"51","errorCount":0,"fatalErrorCount":0,"warningCount":0,"fixableErrorCount":0,"fixableWarningCount":0,"usedDeprecatedRules":"52"},"rkdo00",{"filePath":"53","messages":"54","errorCount":0,"fatalErrorCount":0,"warningCount":0,"fixableErrorCount":0,"fixableWarningCount":0,"usedDeprecatedRules":"52"},{"filePath":"55","messages":"56","errorCount":0,"fatalErrorCount":0,"warningCount":0,"fixableErrorCount":0,"fixableWarningCount":0,"usedDeprecatedRules":"52"},{"filePath":"57","messages":"58","errorCount":0,"fatalErrorCount":0,"warningCount":0,"fixableErrorCount":0,"fixableWarningCount":0,"usedDeprecatedRules":"52"},{"filePath":"59","messages":"60","errorCount":0,"fatalErrorCount":0,"warningCount":0,"fixableErrorCount":0,"fixableWarningCount":0,"usedDeprecatedRules":"52"},{"filePath":"61","messages":"62","errorCount":0,"fatalErrorCount":0,"warningCount":1,"fixableErrorCount":0,"fixableWarningCount":0,"source":null},{"filePath":"63","messages":"64","errorCount":0,"fatalErrorCount":0,"warningCount":0,"fixableErrorCount":0,"fixableWarningCount":0,"usedDeprecatedRules":"52"},{"filePath":"65","messages":"66","errorCount":0,"fatalErrorCount":0,"warningCount":2,"fixableErrorCount":0,"fixableWarningCount":0,"source":"67","usedDeprecatedRules":"52"},{"filePath":"68","messages":"69","errorCount":0,"fatalErrorCount":0,"warningCount":0,"fixableErrorCount":0,"fixableWarningCount":0,"usedDeprecatedRules":"52"},{"filePath":"70","messages":"71","errorCount":0,"fatalErrorCount":0,"warningCount":1,"fixableErrorCount":0,"fixableWarningCount":0,"source":"72","usedDeprecatedRules":"52"},{"filePath":"73","messages":"74","errorCount":0,"fatalErrorCount":0,"warningCount":0,"fixableErrorCount":0,"fixableWarningCount":0,"usedDeprecatedRules":"52"},{"filePath":"75","messages":"76","errorCount":0,"fatalErrorCount":0,"warningCount":0,"fixableErrorCount":0,"fixableWarningCount":0,"usedDeprecatedRules":"52"},{"filePath":"77","messages":"78","errorCount":0,"fatalErrorCount":0,"warningCount":0,"fixableErrorCount":0,"fixableWarningCount":0,"usedDeprecatedRules":"52"},{"filePath":"79","messages":"80","errorCount":0,"fatalErrorCount":0,"warningCount":0,"fixableErrorCount":0,"fixableWarningCount":0,"usedDeprecatedRules":"52"},{"filePath":"81","messages":"82","errorCount":0,"fatalErrorCount":0,"warningCount":0,"fixableErrorCount":0,"fixableWarningCount":0,"usedDeprecatedRules":"52"},{"filePath":"83","messages":"84","errorCount":0,"fatalErrorCount":0,"warningCount":0,"fixableErrorCount":0,"fixableWarningCount":0,"usedDeprecatedRules":"52"},{"filePath":"85","messages":"86","errorCount":0,"fatalErrorCount":0,"warningCount":0,"fixableErrorCount":0,"fixableWarningCount":0,"usedDeprecatedRules":"52"},{"filePath":"87","messages":"88","errorCount":0,"fatalErrorCount":0,"warningCount":0,"fixableErrorCount":0,"fixableWarningCount":0,"usedDeprecatedRules":"52"},{"filePath":"89","messages":"90","errorCount":0,"fatalErrorCount":0,"warningCount":1,"fixableErrorCount":0,"fixableWarningCount":0,"source":"91","usedDeprecatedRules":"52"},{"filePath":"92","messages":"93","errorCount":0,"fatalErrorCount":0,"warningCount":0,"fixableErrorCount":0,"fixableWarningCount":0,"usedDeprecatedRules":"52"},{"filePath":"94","messages":"95","errorCount":0,"fatalErrorCount":0,"warningCount":1,"fixableErrorCount":0,"fixableWarningCount":0,"source":"96","usedDeprecatedRules":"52"},{"filePath":"97","messages":"98","errorCount":0,"fatalErrorCount":0,"warningCount":0,"fixableErrorCount":0,"fixableWarningCount":0,"usedDeprecatedRules":"52"},{"filePath":"99","messages":"100","errorCount":0,"fatalErrorCount":0,"warningCount":0,"fixableErrorCount":0,"fixableWarningCount":0,"usedDeprecatedRules":"52"},{"filePath":"101","messages":"102","errorCount":0,"fatalErrorCount":0,"warningCount":0,"fixableErrorCount":0,"fixableWarningCount":0},"/Users/ellessedonaldson/bootcamp/student/Ai-commerce/client/src/index.js",[],["103","104"],"/Users/ellessedonaldson/bootcamp/student/Ai-commerce/client/src/App.js",[],"/Users/ellessedonaldson/bootcamp/student/Ai-commerce/client/src/reportWebVitals.js",[],"/Users/ellessedonaldson/bootcamp/student/Ai-commerce/client/src/context/CartContext.js",[],"/Users/ellessedonaldson/bootcamp/student/Ai-commerce/client/src/pages/Basket/index.js",[],"/Users/ellessedonaldson/bootcamp/student/Ai-commerce/client/src/pages/Home/index.js",["105"],"/Users/ellessedonaldson/bootcamp/student/Ai-commerce/client/src/pages/Signup/index.js",[],"/Users/ellessedonaldson/bootcamp/student/Ai-commerce/client/src/pages/Checkout/index.js",["106","107"],"import React from \"react\";\nimport { useCart } from \"../../context/CartContext\";\nimport {\n  CardNumberElement,\n  CardExpiryElement,\n  CardCvcElement,\n  useStripe,\n  useElements,\n} from \"@stripe/react-stripe-js\";\n\nimport { useMutation } from \"@apollo/client\";\nimport { CHECKOUT } from \"../../utils/mutations\";\n\nconst Checkout = () => {\n  const { cartItems } = useCart();\n  const [checkout, { error, data }] = useMutation(CHECKOUT);\n\n  const total = cartItems.reduce((acc, item) => acc + item.price, 0);\n  const stripe = useStripe();\n  const elements = useElements();\n\n  const handlePayment = async (e) => {\n    e.preventDefault();\n\n    try {\n      const { data } = await checkout({\n        variables: { amount: total },\n      });\n\n      // data.checkout.id;\n\n      const confirmPayment = await stripe.confirmCardPayment(\n        data.checkout.client_secret,\n        {\n          payment_method: {\n            card: elements.getElement(CardNumberElement),\n          },\n        }\n      );\n\n      if (\"error\" in confirmPayment) {\n        console.log(confirmPayment.error);\n        return;\n      }\n\n      if (confirmPayment.paymentIntent.status === \"succeeded\") {\n        console.log(\"Payment Confirmed\");\n      }\n    } catch (e) {\n      console.error(e);\n    }\n  };\n\n  return (\n    <form onSubmit={handlePayment} className=\"payment-form\">\n      <CardNumberElement />\n      <CardExpiryElement />\n      <CardCvcElement />\n      <button>Confirm Payment</button>\n    </form>\n  );\n};\n\nexport default Checkout;\n","/Users/ellessedonaldson/bootcamp/student/Ai-commerce/client/src/pages/Profile/index.js",[],"/Users/ellessedonaldson/bootcamp/student/Ai-commerce/client/src/pages/ProductList/index.js",["108"],"// UI Components\nimport ProductCard from \"../../components/ProductCard\";\nimport CategoriesLinks from \"../../components/CategoriesLinks\";\n\nimport { useParams } from \"react-router-dom\";\nimport { useQuery } from \"@apollo/client\";\nimport { QUERY_SINGLE_CATEGORY } from \"../../utils/queries\";\n\n// Shopping Cart\nimport { useCart } from \"../../context/CartContext\";\n\nconst ProductList = () => {\n  const { onAddToCart } = useCart();\n\n  const { category } = useParams();\n\n  console.log(`ProductList: category = ${category}`);\n\n  const { loading, data } = useQuery(QUERY_SINGLE_CATEGORY, {\n    // pass URL parameter\n    variables: { name: category },\n  });\n\n  const products = data?.category.products || [];\n  const categoryName = data?.category.name || \"Loading Products...\";\n  console.log(`ProductList: products = ${products}`);\n\n  return (\n    <>\n      <div className=\"w-75 border m-2 p-5\">\n        <h1>All {categoryName}</h1>\n        <div className=\"section-title\">\n          {products.map((product) => (\n            <ProductCard\n              key={product.title}\n              {...product}\n              onAddToCart={() => onAddToCart(product)}\n            />\n          ))}\n        </div>\n      </div>\n      <div className=\"w-25 border m-2 p-5\">\n        <div className=\"section-title\">Browse the Shop</div>\n        <CategoriesLinks />\n      </div>\n    </>\n  );\n};\n\nexport default ProductList;\n","/Users/ellessedonaldson/bootcamp/student/Ai-commerce/client/src/pages/Login/index.js",[],"/Users/ellessedonaldson/bootcamp/student/Ai-commerce/client/src/pages/Product/index.js",[],"/Users/ellessedonaldson/bootcamp/student/Ai-commerce/client/src/components/Layout/index.js",[],"/Users/ellessedonaldson/bootcamp/student/Ai-commerce/client/src/utils/queries.js",[],"/Users/ellessedonaldson/bootcamp/student/Ai-commerce/client/src/utils/auth.js",[],"/Users/ellessedonaldson/bootcamp/student/Ai-commerce/client/src/utils/mutations.js",[],"/Users/ellessedonaldson/bootcamp/student/Ai-commerce/client/src/components/CheckoutLinks/index.js",[],"/Users/ellessedonaldson/bootcamp/student/Ai-commerce/client/src/components/BasketCard/index.js",[],"/Users/ellessedonaldson/bootcamp/student/Ai-commerce/client/src/components/CategoriesLinks/index.js",["109"],"import { Link } from \"react-router-dom\";\nimport { useQuery } from \"@apollo/client\";\nimport { QUERY_CATEGORIES } from \"../../utils/queries\";\n\n//import categories from '../data/categories'\n\nconst CategoriesLinks = () => {\n  const { loading, data } = useQuery(QUERY_CATEGORIES);\n  const categories = data?.categories || [];\n\n  return (\n    <div>\n      {categories.map((category) => (\n        <div key={category.name} className=\"category-link border p-5 m-3\">\n          <Link to={`/category/${category.name}`}>{category.name}</Link>\n        </div>\n      ))}\n    </div>\n  );\n};\n\nexport default CategoriesLinks;\n","/Users/ellessedonaldson/bootcamp/student/Ai-commerce/client/src/components/ProductCard/index.js",[],"/Users/ellessedonaldson/bootcamp/student/Ai-commerce/client/src/components/Footer/index.js",["110"],"import logo from \"../../assets/logo.svg\";\n\nconst Footer = () => {\n  return (\n    <div className=\"footer\">Copyright &copy; {new Date().getFullYear()}</div>\n  );\n};\n\nexport default Footer;\n","/Users/ellessedonaldson/bootcamp/student/Ai-commerce/client/src/components/Header/index.js",[],"/Users/ellessedonaldson/bootcamp/student/Ai-commerce/client/src/utils/textulize.js",[],"/Users/ellessedonaldson/bootcamp/student/Ai-commerce/client/src/components/SearchBar/index.js",[],{"ruleId":"111","replacedBy":"112"},{"ruleId":"113","replacedBy":"114"},{"ruleId":"115","severity":1,"message":"116","line":15,"column":11,"nodeType":"117","messageId":"118","endLine":15,"endColumn":18},{"ruleId":"115","severity":1,"message":"119","line":16,"column":22,"nodeType":"117","messageId":"118","endLine":16,"endColumn":27},{"ruleId":"115","severity":1,"message":"120","line":16,"column":29,"nodeType":"117","messageId":"118","endLine":16,"endColumn":33},{"ruleId":"115","severity":1,"message":"116","line":19,"column":11,"nodeType":"117","messageId":"118","endLine":19,"endColumn":18},{"ruleId":"115","severity":1,"message":"116","line":8,"column":11,"nodeType":"117","messageId":"118","endLine":8,"endColumn":18},{"ruleId":"115","severity":1,"message":"121","line":1,"column":8,"nodeType":"117","messageId":"118","endLine":1,"endColumn":12},"no-native-reassign",["122"],"no-negated-in-lhs",["123"],"no-unused-vars","'loading' is assigned a value but never used.","Identifier","unusedVar","'error' is assigned a value but never used.","'data' is assigned a value but never used.","'logo' is defined but never used.","no-global-assign","no-unsafe-negation"]
+[
+  {
+    "/Users/ellessedonaldson/bootcamp/student/Ai-commerce/client/src/index.js": "1",
+    "/Users/ellessedonaldson/bootcamp/student/Ai-commerce/client/src/App.js": "2",
+    "/Users/ellessedonaldson/bootcamp/student/Ai-commerce/client/src/reportWebVitals.js": "3",
+    "/Users/ellessedonaldson/bootcamp/student/Ai-commerce/client/src/context/CartContext.js": "4",
+    "/Users/ellessedonaldson/bootcamp/student/Ai-commerce/client/src/pages/Basket/index.js": "5",
+    "/Users/ellessedonaldson/bootcamp/student/Ai-commerce/client/src/pages/Home/index.js": "6",
+    "/Users/ellessedonaldson/bootcamp/student/Ai-commerce/client/src/pages/Signup/index.js": "7",
+    "/Users/ellessedonaldson/bootcamp/student/Ai-commerce/client/src/pages/Checkout/index.js": "8",
+    "/Users/ellessedonaldson/bootcamp/student/Ai-commerce/client/src/pages/Profile/index.js": "9",
+    "/Users/ellessedonaldson/bootcamp/student/Ai-commerce/client/src/pages/ProductList/index.js": "10",
+    "/Users/ellessedonaldson/bootcamp/student/Ai-commerce/client/src/pages/Login/index.js": "11",
+    "/Users/ellessedonaldson/bootcamp/student/Ai-commerce/client/src/pages/Product/index.js": "12",
+    "/Users/ellessedonaldson/bootcamp/student/Ai-commerce/client/src/components/Layout/index.js": "13",
+    "/Users/ellessedonaldson/bootcamp/student/Ai-commerce/client/src/utils/queries.js": "14",
+    "/Users/ellessedonaldson/bootcamp/student/Ai-commerce/client/src/utils/auth.js": "15",
+    "/Users/ellessedonaldson/bootcamp/student/Ai-commerce/client/src/utils/mutations.js": "16",
+    "/Users/ellessedonaldson/bootcamp/student/Ai-commerce/client/src/components/CheckoutLinks/index.js": "17",
+    "/Users/ellessedonaldson/bootcamp/student/Ai-commerce/client/src/components/BasketCard/index.js": "18",
+    "/Users/ellessedonaldson/bootcamp/student/Ai-commerce/client/src/components/CategoriesLinks/index.js": "19",
+    "/Users/ellessedonaldson/bootcamp/student/Ai-commerce/client/src/components/ProductCard/index.js": "20",
+    "/Users/ellessedonaldson/bootcamp/student/Ai-commerce/client/src/components/Footer/index.js": "21",
+    "/Users/ellessedonaldson/bootcamp/student/Ai-commerce/client/src/components/Header/index.js": "22",
+    "/Users/ellessedonaldson/bootcamp/student/Ai-commerce/client/src/utils/textulize.js": "23"
+  },
+  {
+    "size": 547,
+    "mtime": 1678219033450,
+    "results": "24",
+    "hashOfConfig": "25"
+  },
+  {
+    "size": 2816,
+    "mtime": 1678818473942,
+    "results": "26",
+    "hashOfConfig": "25"
+  },
+  {
+    "size": 362,
+    "mtime": 1678219033461,
+    "results": "27",
+    "hashOfConfig": "25"
+  },
+  {
+    "size": 1174,
+    "mtime": 1678219033446,
+    "results": "28",
+    "hashOfConfig": "25"
+  },
+  {
+    "size": 899,
+    "mtime": 1678475362548,
+    "results": "29",
+    "hashOfConfig": "25"
+  },
+  {
+    "size": 3987,
+    "mtime": 1678818473946,
+    "results": "30",
+    "hashOfConfig": "25"
+  },
+  {
+    "size": 2664,
+    "mtime": 1678475362552,
+    "results": "31",
+    "hashOfConfig": "25"
+  },
+  {
+    "size": 1499,
+    "mtime": 1678475362548,
+    "results": "32",
+    "hashOfConfig": "25"
+  },
+  {
+    "size": 1386,
+    "mtime": 1678475362551,
+    "results": "33",
+    "hashOfConfig": "25"
+  },
+  {
+    "size": 1388,
+    "mtime": 1678475362551,
+    "results": "34",
+    "hashOfConfig": "25"
+  },
+  {
+    "size": 2695,
+    "mtime": 1678818473947,
+    "results": "35",
+    "hashOfConfig": "25"
+  },
+  {
+    "size": 1318,
+    "mtime": 1678475362550,
+    "results": "36",
+    "hashOfConfig": "25"
+  },
+  {
+    "size": 268,
+    "mtime": 1678475362546,
+    "results": "37",
+    "hashOfConfig": "25"
+  },
+  {
+    "size": 1149,
+    "mtime": 1678818473948,
+    "results": "38",
+    "hashOfConfig": "25"
+  },
+  {
+    "size": 1043,
+    "mtime": 1678818473947,
+    "results": "39",
+    "hashOfConfig": "25"
+  },
+  {
+    "size": 887,
+    "mtime": 1678818473947,
+    "results": "40",
+    "hashOfConfig": "25"
+  },
+  {
+    "size": 575,
+    "mtime": 1678475362544,
+    "results": "41",
+    "hashOfConfig": "25"
+  },
+  {
+    "size": 828,
+    "mtime": 1678475362542,
+    "results": "42",
+    "hashOfConfig": "25"
+  },
+  {
+    "size": 606,
+    "mtime": 1678475362543,
+    "results": "43",
+    "hashOfConfig": "25"
+  },
+  {
+    "size": 843,
+    "mtime": 1678475362547,
+    "results": "44",
+    "hashOfConfig": "25"
+  },
+  {
+    "size": 187,
+    "mtime": 1678475362544,
+    "results": "45",
+    "hashOfConfig": "25"
+  },
+  {
+    "size": 1799,
+    "mtime": 1678475362545,
+    "results": "46",
+    "hashOfConfig": "25"
+  },
+  {
+    "size": 96,
+    "mtime": 1678219033466,
+    "results": "47",
+    "hashOfConfig": "25"
+  },
+  {
+    "filePath": "48",
+    "messages": "49",
+    "errorCount": 0,
+    "fatalErrorCount": 0,
+    "warningCount": 0,
+    "fixableErrorCount": 0,
+    "fixableWarningCount": 0,
+    "usedDeprecatedRules": "50"
+  },
+  "rkdo00",
+  {
+    "filePath": "51",
+    "messages": "52",
+    "errorCount": 0,
+    "fatalErrorCount": 0,
+    "warningCount": 0,
+    "fixableErrorCount": 0,
+    "fixableWarningCount": 0
+  },
+  {
+    "filePath": "53",
+    "messages": "54",
+    "errorCount": 0,
+    "fatalErrorCount": 0,
+    "warningCount": 0,
+    "fixableErrorCount": 0,
+    "fixableWarningCount": 0,
+    "usedDeprecatedRules": "50"
+  },
+  {
+    "filePath": "55",
+    "messages": "56",
+    "errorCount": 0,
+    "fatalErrorCount": 0,
+    "warningCount": 0,
+    "fixableErrorCount": 0,
+    "fixableWarningCount": 0,
+    "usedDeprecatedRules": "50"
+  },
+  {
+    "filePath": "57",
+    "messages": "58",
+    "errorCount": 0,
+    "fatalErrorCount": 0,
+    "warningCount": 0,
+    "fixableErrorCount": 0,
+    "fixableWarningCount": 0,
+    "usedDeprecatedRules": "50"
+  },
+  {
+    "filePath": "59",
+    "messages": "60",
+    "errorCount": 0,
+    "fatalErrorCount": 0,
+    "warningCount": 4,
+    "fixableErrorCount": 0,
+    "fixableWarningCount": 0,
+    "source": null
+  },
+  {
+    "filePath": "61",
+    "messages": "62",
+    "errorCount": 0,
+    "fatalErrorCount": 0,
+    "warningCount": 0,
+    "fixableErrorCount": 0,
+    "fixableWarningCount": 0,
+    "usedDeprecatedRules": "50"
+  },
+  {
+    "filePath": "63",
+    "messages": "64",
+    "errorCount": 0,
+    "fatalErrorCount": 0,
+    "warningCount": 2,
+    "fixableErrorCount": 0,
+    "fixableWarningCount": 0,
+    "source": "65",
+    "usedDeprecatedRules": "50"
+  },
+  {
+    "filePath": "66",
+    "messages": "67",
+    "errorCount": 0,
+    "fatalErrorCount": 0,
+    "warningCount": 0,
+    "fixableErrorCount": 0,
+    "fixableWarningCount": 0,
+    "usedDeprecatedRules": "50"
+  },
+  {
+    "filePath": "68",
+    "messages": "69",
+    "errorCount": 0,
+    "fatalErrorCount": 0,
+    "warningCount": 1,
+    "fixableErrorCount": 0,
+    "fixableWarningCount": 0,
+    "source": "70",
+    "usedDeprecatedRules": "50"
+  },
+  {
+    "filePath": "71",
+    "messages": "72",
+    "errorCount": 0,
+    "fatalErrorCount": 0,
+    "warningCount": 0,
+    "fixableErrorCount": 0,
+    "fixableWarningCount": 0
+  },
+  {
+    "filePath": "73",
+    "messages": "74",
+    "errorCount": 0,
+    "fatalErrorCount": 0,
+    "warningCount": 0,
+    "fixableErrorCount": 0,
+    "fixableWarningCount": 0,
+    "usedDeprecatedRules": "50"
+  },
+  {
+    "filePath": "75",
+    "messages": "76",
+    "errorCount": 0,
+    "fatalErrorCount": 0,
+    "warningCount": 0,
+    "fixableErrorCount": 0,
+    "fixableWarningCount": 0,
+    "usedDeprecatedRules": "50"
+  },
+  {
+    "filePath": "77",
+    "messages": "78",
+    "errorCount": 0,
+    "fatalErrorCount": 0,
+    "warningCount": 0,
+    "fixableErrorCount": 0,
+    "fixableWarningCount": 0
+  },
+  {
+    "filePath": "79",
+    "messages": "80",
+    "errorCount": 0,
+    "fatalErrorCount": 0,
+    "warningCount": 0,
+    "fixableErrorCount": 0,
+    "fixableWarningCount": 0
+  },
+  {
+    "filePath": "81",
+    "messages": "82",
+    "errorCount": 0,
+    "fatalErrorCount": 0,
+    "warningCount": 0,
+    "fixableErrorCount": 0,
+    "fixableWarningCount": 0
+  },
+  {
+    "filePath": "83",
+    "messages": "84",
+    "errorCount": 0,
+    "fatalErrorCount": 0,
+    "warningCount": 0,
+    "fixableErrorCount": 0,
+    "fixableWarningCount": 0,
+    "usedDeprecatedRules": "50"
+  },
+  {
+    "filePath": "85",
+    "messages": "86",
+    "errorCount": 0,
+    "fatalErrorCount": 0,
+    "warningCount": 0,
+    "fixableErrorCount": 0,
+    "fixableWarningCount": 0,
+    "usedDeprecatedRules": "50"
+  },
+  {
+    "filePath": "87",
+    "messages": "88",
+    "errorCount": 0,
+    "fatalErrorCount": 0,
+    "warningCount": 1,
+    "fixableErrorCount": 0,
+    "fixableWarningCount": 0,
+    "source": "89",
+    "usedDeprecatedRules": "50"
+  },
+  {
+    "filePath": "90",
+    "messages": "91",
+    "errorCount": 0,
+    "fatalErrorCount": 0,
+    "warningCount": 0,
+    "fixableErrorCount": 0,
+    "fixableWarningCount": 0,
+    "usedDeprecatedRules": "50"
+  },
+  {
+    "filePath": "92",
+    "messages": "93",
+    "errorCount": 0,
+    "fatalErrorCount": 0,
+    "warningCount": 1,
+    "fixableErrorCount": 0,
+    "fixableWarningCount": 0,
+    "source": "94",
+    "usedDeprecatedRules": "50"
+  },
+  {
+    "filePath": "95",
+    "messages": "96",
+    "errorCount": 0,
+    "fatalErrorCount": 0,
+    "warningCount": 0,
+    "fixableErrorCount": 0,
+    "fixableWarningCount": 0,
+    "usedDeprecatedRules": "50"
+  },
+  {
+    "filePath": "97",
+    "messages": "98",
+    "errorCount": 0,
+    "fatalErrorCount": 0,
+    "warningCount": 0,
+    "fixableErrorCount": 0,
+    "fixableWarningCount": 0,
+    "usedDeprecatedRules": "50"
+  },
+  "/Users/ellessedonaldson/bootcamp/student/Ai-commerce/client/src/index.js",
+  [],
+  [
+    "99",
+    "100"
+  ],
+  "/Users/ellessedonaldson/bootcamp/student/Ai-commerce/client/src/App.js",
+  [],
+  "/Users/ellessedonaldson/bootcamp/student/Ai-commerce/client/src/reportWebVitals.js",
+  [],
+  "/Users/ellessedonaldson/bootcamp/student/Ai-commerce/client/src/context/CartContext.js",
+  [],
+  "/Users/ellessedonaldson/bootcamp/student/Ai-commerce/client/src/pages/Basket/index.js",
+  [],
+  "/Users/ellessedonaldson/bootcamp/student/Ai-commerce/client/src/pages/Home/index.js",
+  [
+    "101",
+    "102",
+    "103",
+    "104"
+  ],
+  "/Users/ellessedonaldson/bootcamp/student/Ai-commerce/client/src/pages/Signup/index.js",
+  [],
+  "/Users/ellessedonaldson/bootcamp/student/Ai-commerce/client/src/pages/Checkout/index.js",
+  [
+    "105",
+    "106"
+  ],
+  "import React from \"react\";\nimport { useCart } from \"../../context/CartContext\";\nimport {\n  CardNumberElement,\n  CardExpiryElement,\n  CardCvcElement,\n  useStripe,\n  useElements,\n} from \"@stripe/react-stripe-js\";\n\nimport { useMutation } from \"@apollo/client\";\nimport { CHECKOUT } from \"../../utils/mutations\";\n\nconst Checkout = () => {\n  const { cartItems } = useCart();\n  const [checkout, { error, data }] = useMutation(CHECKOUT);\n\n  const total = cartItems.reduce((acc, item) => acc + item.price, 0);\n  const stripe = useStripe();\n  const elements = useElements();\n\n  const handlePayment = async (e) => {\n    e.preventDefault();\n\n    try {\n      const { data } = await checkout({\n        variables: { amount: total },\n      });\n\n      // data.checkout.id;\n\n      const confirmPayment = await stripe.confirmCardPayment(\n        data.checkout.client_secret,\n        {\n          payment_method: {\n            card: elements.getElement(CardNumberElement),\n          },\n        }\n      );\n\n      if (\"error\" in confirmPayment) {\n        console.log(confirmPayment.error);\n        return;\n      }\n\n      if (confirmPayment.paymentIntent.status === \"succeeded\") {\n        console.log(\"Payment Confirmed\");\n      }\n    } catch (e) {\n      console.error(e);\n    }\n  };\n\n  return (\n    <form onSubmit={handlePayment} className=\"payment-form\">\n      <CardNumberElement />\n      <CardExpiryElement />\n      <CardCvcElement />\n      <button>Confirm Payment</button>\n    </form>\n  );\n};\n\nexport default Checkout;\n",
+  "/Users/ellessedonaldson/bootcamp/student/Ai-commerce/client/src/pages/Profile/index.js",
+  [],
+  "/Users/ellessedonaldson/bootcamp/student/Ai-commerce/client/src/pages/ProductList/index.js",
+  [
+    "107"
+  ],
+  "// UI Components\nimport ProductCard from \"../../components/ProductCard\";\nimport CategoriesLinks from \"../../components/CategoriesLinks\";\n\nimport { useParams } from \"react-router-dom\";\nimport { useQuery } from \"@apollo/client\";\nimport { QUERY_SINGLE_CATEGORY } from \"../../utils/queries\";\n\n// Shopping Cart\nimport { useCart } from \"../../context/CartContext\";\n\nconst ProductList = () => {\n  const { onAddToCart } = useCart();\n\n  const { category } = useParams();\n\n  console.log(`ProductList: category = ${category}`);\n\n  const { loading, data } = useQuery(QUERY_SINGLE_CATEGORY, {\n    // pass URL parameter\n    variables: { name: category },\n  });\n\n  const products = data?.category.products || [];\n  const categoryName = data?.category.name || \"Loading Products...\";\n  console.log(`ProductList: products = ${products}`);\n\n  return (\n    <>\n      <div className=\"w-75 border m-2 p-5\">\n        <h1>All {categoryName}</h1>\n        <div className=\"section-title\">\n          {products.map((product) => (\n            <ProductCard\n              key={product.title}\n              {...product}\n              onAddToCart={() => onAddToCart(product)}\n            />\n          ))}\n        </div>\n      </div>\n      <div className=\"w-25 border m-2 p-5\">\n        <div className=\"section-title\">Browse the Shop</div>\n        <CategoriesLinks />\n      </div>\n    </>\n  );\n};\n\nexport default ProductList;\n",
+  "/Users/ellessedonaldson/bootcamp/student/Ai-commerce/client/src/pages/Login/index.js",
+  [],
+  "/Users/ellessedonaldson/bootcamp/student/Ai-commerce/client/src/pages/Product/index.js",
+  [],
+  "/Users/ellessedonaldson/bootcamp/student/Ai-commerce/client/src/components/Layout/index.js",
+  [],
+  "/Users/ellessedonaldson/bootcamp/student/Ai-commerce/client/src/utils/queries.js",
+  [],
+  "/Users/ellessedonaldson/bootcamp/student/Ai-commerce/client/src/utils/auth.js",
+  [],
+  "/Users/ellessedonaldson/bootcamp/student/Ai-commerce/client/src/utils/mutations.js",
+  [],
+  "/Users/ellessedonaldson/bootcamp/student/Ai-commerce/client/src/components/CheckoutLinks/index.js",
+  [],
+  "/Users/ellessedonaldson/bootcamp/student/Ai-commerce/client/src/components/BasketCard/index.js",
+  [],
+  "/Users/ellessedonaldson/bootcamp/student/Ai-commerce/client/src/components/CategoriesLinks/index.js",
+  [
+    "108"
+  ],
+  "import { Link } from \"react-router-dom\";\nimport { useQuery } from \"@apollo/client\";\nimport { QUERY_CATEGORIES } from \"../../utils/queries\";\n\n//import categories from '../data/categories'\n\nconst CategoriesLinks = () => {\n  const { loading, data } = useQuery(QUERY_CATEGORIES);\n  const categories = data?.categories || [];\n\n  return (\n    <div>\n      {categories.map((category) => (\n        <div key={category.name} className=\"category-link border p-5 m-3\">\n          <Link to={`/category/${category.name}`}>{category.name}</Link>\n        </div>\n      ))}\n    </div>\n  );\n};\n\nexport default CategoriesLinks;\n",
+  "/Users/ellessedonaldson/bootcamp/student/Ai-commerce/client/src/components/ProductCard/index.js",
+  [],
+  "/Users/ellessedonaldson/bootcamp/student/Ai-commerce/client/src/components/Footer/index.js",
+  [
+    "109"
+  ],
+  "import logo from \"../../assets/logo.svg\";\n\nconst Footer = () => {\n  return (\n    <div className=\"footer\">Copyright &copy; {new Date().getFullYear()}</div>\n  );\n};\n\nexport default Footer;\n",
+  "/Users/ellessedonaldson/bootcamp/student/Ai-commerce/client/src/components/Header/index.js",
+  [],
+  "/Users/ellessedonaldson/bootcamp/student/Ai-commerce/client/src/utils/textulize.js",
+  [],
+  {
+    "ruleId": "110",
+    "replacedBy": "111"
+  },
+  {
+    "ruleId": "112",
+    "replacedBy": "113"
+  },
+  {
+    "ruleId": "114",
+    "severity": 1,
+    "message": "115",
+    "line": 2,
+    "column": 8,
+    "nodeType": "116",
+    "messageId": "117",
+    "endLine": 2,
+    "endColumn": 19
+  },
+  {
+    "ruleId": "114",
+    "severity": 1,
+    "message": "118",
+    "line": 3,
+    "column": 8,
+    "nodeType": "116",
+    "messageId": "117",
+    "endLine": 3,
+    "endColumn": 23
+  },
+  {
+    "ruleId": "114",
+    "severity": 1,
+    "message": "119",
+    "line": 91,
+    "column": 19,
+    "nodeType": "116",
+    "messageId": "117",
+    "endLine": 91,
+    "endColumn": 23
+  },
+  {
+    "ruleId": "120",
+    "severity": 1,
+    "message": "121",
+    "line": 117,
+    "column": 24,
+    "nodeType": "122",
+    "endLine": 117,
+    "endColumn": 67
+  },
+  {
+    "ruleId": "114",
+    "severity": 1,
+    "message": "123",
+    "line": 16,
+    "column": 22,
+    "nodeType": "116",
+    "messageId": "117",
+    "endLine": 16,
+    "endColumn": 27
+  },
+  {
+    "ruleId": "114",
+    "severity": 1,
+    "message": "119",
+    "line": 16,
+    "column": 29,
+    "nodeType": "116",
+    "messageId": "117",
+    "endLine": 16,
+    "endColumn": 33
+  },
+  {
+    "ruleId": "114",
+    "severity": 1,
+    "message": "124",
+    "line": 19,
+    "column": 11,
+    "nodeType": "116",
+    "messageId": "117",
+    "endLine": 19,
+    "endColumn": 18
+  },
+  {
+    "ruleId": "114",
+    "severity": 1,
+    "message": "124",
+    "line": 8,
+    "column": 11,
+    "nodeType": "116",
+    "messageId": "117",
+    "endLine": 8,
+    "endColumn": 18
+  },
+  {
+    "ruleId": "114",
+    "severity": 1,
+    "message": "125",
+    "line": 1,
+    "column": 8,
+    "nodeType": "116",
+    "messageId": "117",
+    "endLine": 1,
+    "endColumn": 12
+  },
+  "no-native-reassign",
+  [
+    "126"
+  ],
+  "no-negated-in-lhs",
+  [
+    "127"
+  ],
+  "no-unused-vars",
+  "'ProductCard' is defined but never used.",
+  "Identifier",
+  "unusedVar",
+  "'CategoriesLinks' is defined but never used.",
+  "'data' is assigned a value but never used.",
+  "jsx-a11y/img-redundant-alt",
+  "Redundant alt attribute. Screen-readers already announce `img` tags as an image. You don’t need to use the words `image`, `photo,` or `picture` (or any specified custom words) in the alt prop.",
+  "JSXOpeningElement",
+  "'error' is assigned a value but never used.",
+  "'loading' is assigned a value but never used.",
+  "'logo' is defined but never used.",
+  "no-global-assign",
+  "no-unsafe-negation"
+]
