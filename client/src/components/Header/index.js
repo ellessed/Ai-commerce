@@ -1,4 +1,5 @@
-import logo from "../../assets/logo.svg";
+import logo from "../../assets/logo.png";
+import "../Header/header.css";
 
 import { Pluralize } from "../../utils/textulize";
 import { useCart } from "../../context/CartContext";
@@ -20,8 +21,9 @@ const Header = () => {
         <Link className="" to="/">
           <img src={logo} className="logo" alt="logo" />
         </Link>
-        <h1>Quick and Dirty Shop</h1>
+        <h1 className="logo-h">Arty Intelligence</h1>
       </div>
+      <div className="right-section">
       <div className="cart-section">
         {cartItems.length > 0 ? (
           <div className="cart-items">
@@ -59,6 +61,7 @@ const Header = () => {
             </Link>
           </>
         )}
+      </div>
       </div>
     </div>
   );
