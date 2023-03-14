@@ -1,13 +1,14 @@
 {
+
   "name": "arty-intelligence",
   "version": "1.0.0",
   "description": "",
   "main": "server/server.js",
   "scripts": {
     "start": "node server --ignore client",
-    "develop": "concurrently \"cd server && npm run start\" \"cd client && npm start\"",
+    "develop": "export NODE_OPTIONS=--openssl-legacy-provider && concurrently \"cd server && npm run start\" \"cd client && npm start\"",
     "install": "cd server && npm i && cd ../client && npm i",
-    "seed": "cd server && npm run seed",
+    "seed": "export NODE_OPTIONS=--openssl-legacy-provider && cd server && npm run seed",
     "build": "cd client && npm run build"
   },
   "keywords": [],
@@ -20,3 +21,6 @@
     "react-icons": "^4.8.0"
   }
 }
+
+    
+
