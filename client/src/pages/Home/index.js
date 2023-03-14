@@ -7,6 +7,7 @@ import { QUERY_FEATURED_PRODUCTS } from "../../utils/queries";
 
 // Shopping Cart
 import { useCart } from "../../context/CartContext";
+import SearchBar from "../../components/SearchBar";
 
 const Home = () => {
   const { onAddToCart } = useCart();
@@ -17,6 +18,7 @@ const Home = () => {
   return (
     <>
       <div className="w-75 border m-2 p-5">
+        <SearchBar />
         <div className="section-title">
           {products.map((product) => (
             <ProductCard
