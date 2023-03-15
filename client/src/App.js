@@ -24,6 +24,7 @@ import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import Profile from "./pages/Profile";
 import Checkout from "./pages/Checkout";
+import auth from "./utils/auth";
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -70,7 +71,7 @@ function App() {
                 <Route
                   path="/checkout"
                   element={
-                    localStorage.getItem("id_token") ? (
+                    auth.loggedIn() ? (
                       <Checkout />
                     ) : (
                       <Navigate to="/login" state={{ from: "/checkout" }} />

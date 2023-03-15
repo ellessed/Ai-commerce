@@ -34,11 +34,10 @@ const Login = (props) => {
 
       Auth.login(data.login.token);
 
-      if (from) {
-        navigate(from);
-      } else {
-        navigate("/payment");
-      }
+      // if (from) {
+      //   navigate(from);
+      // }
+      navigate("/");
     } catch (e) {
       console.error(e);
     }
