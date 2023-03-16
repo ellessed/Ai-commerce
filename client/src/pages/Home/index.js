@@ -5,6 +5,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
+import "../Home/home.css";
 
 // import { useQuery } from "@apollo/client";
 // import { QUERY_FEATURED_PRODUCTS } from "../../utils/queries";
@@ -127,22 +128,8 @@ const Home = () => {
     <>
       <div className="w-75 border m-2 p-5">
         <SearchBar />
-        <Carousel>
-          <div>
-            <img src="./AvatarMaker.png" />
-            <p className="legend">Legend 1</p>
-          </div>
-          <div>
-            <img src="" />
-            <p className="legend">Legend 2</p>
-          </div>
-          <div>
-            <img src="" />
-            <p className="legend">Legend 3</p>
-          </div>
-        </Carousel>
         <div className="section-title">
-          <h2>Search for the art you want to see!</h2>
+          <h2 className="search-h">Search for the art you want to see!</h2>
           <div className="relative w-64">
             <input type="text" onChange={onInputChange} placeholder="Search" />
             <button onClick={onButtonSubmit}>
@@ -168,6 +155,23 @@ const Home = () => {
             onAddToCart={() => onAddToCart(art)}
           />
         ))}
+      </div>
+
+      <div>
+      <Carousel>
+          <div>
+            <img src="../assets/images/4.webp" />
+            <p className="legend">Legend 1</p>
+          </div>
+          <div>
+            <img src="../assets/images/5.webp" />
+            <p className="legend">Legend 2</p>
+          </div>
+          <div>
+            <img src="../assets/images/6.webp" />
+            <p className="legend">Legend 3</p>
+          </div>
+        </Carousel>
       </div>
     </>
   );
