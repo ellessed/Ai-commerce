@@ -1,0 +1,15 @@
+.section-title {
+    color: var(--dark);
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.search-h {
+    color: var(--dark);
+    font-size: 20px;
+}
