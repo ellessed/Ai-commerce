@@ -7,6 +7,7 @@ import { ADD_USER } from "../../utils/mutations";
 import Auth from "../../utils/auth";
 
 const Signup = () => {
+
   const [formState, setFormState] = useState({
     username: "",
     email: "",
@@ -16,6 +17,7 @@ const Signup = () => {
   const navigate = useNavigate();
   const [addUser, { error, data }] = useMutation(ADD_USER);
 
+
   const handleChange = (event) => {
     const { name, value } = event.target;
 
@@ -24,6 +26,7 @@ const Signup = () => {
       [name]: value,
     });
   };
+
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
@@ -40,6 +43,7 @@ const Signup = () => {
     }
   };
 
+
   return (
     <main className="flex-row justify-center mb-4">
       <div className="col-12 col-lg-10">
@@ -52,7 +56,7 @@ const Signup = () => {
                 <Link to="/">back to the homepage.</Link>
               </p>
             ) : (
-              <form onSubmit={handleFormSubmit}>
+              <form onSubmit={handleSignUpSubmit}>
                 <input
                   className="form-input"
                   placeholder="Your username"

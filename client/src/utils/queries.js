@@ -78,3 +78,16 @@ export const QUERY_ME = gql`
     }
   }
 `;
+
+export const QUERY_SEARCH = gql`
+  query RecentArt {
+    recentArt {
+      recentArt {
+        _id
+        productName
+        price
+        imageUrl
+      }
+    }
+  }
+`;
