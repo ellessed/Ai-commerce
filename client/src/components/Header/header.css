@@ -24,7 +24,8 @@
 
 .cart-section {
     display: flex;
-    align-items: center; /* this will vertically center the text and any other elements in the sections */
+    align-items: center;
+    color: var(--dark);
 }
 
 .login-section {
@@ -48,4 +49,11 @@ a:hover {
 .cart-items {
     font-family: var(--b-font);
     font-size: 25px;
+}
+
+@media screen and (max-width: 768px) {
+   
+    .logo-h {
+        font-size: 25px;
+    }
 }
