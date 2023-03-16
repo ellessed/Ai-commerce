@@ -42,6 +42,7 @@ const Home = () => {
   const userData = data?.recentArt || {};
 
   const [saveArtwork] = useMutation(SAVE_ARTWORK);
+  const [addProduct] = useMutation(SAVE_PRODUCT);
   const onInputChange = (event) => {
     setInput(event.target.value);
     const inputWords = input.trim().split(/\s+/).length;
@@ -120,6 +121,28 @@ const Home = () => {
       })
       .catch((err) => console.log(err));
   };
+
+  const addToCart = () => {
+    if (Auth.loggedIn()) {
+      saveArtwork({
+        variables: {
+          productName: artName,
+          imageUrl: imageUrl,
+          price: price,
+        },
+      });
+    } else {
+      addProduct({
+        variables: {
+          productName: artName,
+          imageUrl: imageUrl,
+          price: price,
+        },
+      });
+    }
+    onAddToCart(artData);
+  };
+
   useEffect(() => {
     setArtName("");
   }, [input]);
@@ -156,7 +179,7 @@ const Home = () => {
               <p>Price: ${price}</p>
             </>
           )}
-          <button onClick={onAddToCart}>Add to Cart</button>
+          <button onClick={addToCart}>Add to Cart</button>
         </div>
       </div>
 
