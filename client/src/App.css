@@ -2,66 +2,23 @@
 :root {
 --light: #FBFCFD;
 --dark: #372141;
+--hover: #d67310;
 --h-font: 'Homenaje', sans-serif;
 --b-font:'Rubik', sans-serif;
 }
 
-.App {
-  text-align: center;
-}
-
-.logo {
-  height: 80px;
-  pointer-events: none;
-}
-
 .wrapper {
-  background-color: #282c34;
+  background-color: var(--light);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: white;
-}
-
-.header {
-  width: 80%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
-.logo-section {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.cart-section {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.login-section {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  font-family: var(--b-font);
 }
 
 .header h1 {
   margin: 0;
-  font-size: calc(10px + 2vmin);
 }
 
 .container {
@@ -79,7 +36,6 @@
 
 .section-title {
   font-size: calc(10px + 2vmin);
-  color: white;
   margin: 0;
 }
 
@@ -89,7 +45,6 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
 }
 
 .w-75 {
@@ -98,10 +53,6 @@
 
 .w-25 {
   width: 25%;
-}
-
-.border {
-  border: 1px solid #61dafb;
 }
 
 .m-1 {
