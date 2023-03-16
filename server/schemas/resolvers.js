@@ -133,6 +133,18 @@ const resolvers = {
         throw new Error("Something went wrong");
       }
     },
+    addProduct: async (parent, { productName, imageUrl, price }, context) => {
+      try {
+        const product = await Product.create({
+          productName,
+          imageUrl,
+          price,
+        });
+        return product;
+      } catch (err) {
+        throw new Error("Something went wrong");
+      }
+    },
   },
 };
 
