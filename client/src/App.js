@@ -21,7 +21,6 @@ import Home from "./pages/Home";
 import Basket from "./pages/Basket";
 import Product from "./pages/Product";
 import ProductList from "./pages/ProductList";
-import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import Profile from "./pages/Profile";
 import Checkout from "./pages/Checkout";
@@ -72,7 +71,7 @@ function App() {
                   path="/login"
                   element={<Login setIsLogged={setIsLogged} />}
                 />
-                <Route path="/signup" element={<Signup />} />
+                <Route path="/signup" element={<Login />} />
                 <Route path="/basket" element={<Basket />} />
                 <Route path="/me" element={<Home />} />
                 <Route path="/profiles/:username" element={<Profile />} />
