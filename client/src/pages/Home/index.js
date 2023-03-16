@@ -150,13 +150,17 @@ const Home = () => {
   return (
     <>
       <div className="w-75 border m-2 p-5">
-        <SearchBar />
         <div className="section-title">
           <h2 className="search-h">Search for the art you want to see!</h2>
-          <div className="relative w-64">
-            <input type="text" onChange={onInputChange} placeholder="Search" />
-            <button onClick={onButtonSubmit}>
-              <FaSearch className="w-6 h-6 text-gray-400" />
+          <div>
+            <input
+              className="inputSearch"
+              type="text"
+              onChange={onInputChange}
+              placeholder="Search"
+            />
+            <button className="searchButton" onClick={onButtonSubmit}>
+              <FaSearch className="w-6 h-6 text-gray-400 search-icon" />
             </button>
           </div>
           {imageUrl && <img src={imageUrl} alt="input to image" />}
@@ -166,22 +170,11 @@ const Home = () => {
               <p>Price: ${price}</p>
             </>
           )}
-          <button onClick={addToCart}>Add to Cart</button>
+          <button className="btn btn-dark cartButton" onClick={onAddToCart}>
+            Add to Cart
+          </button>
         </div>
-      </div>
-
-      <div className="w-25 border m-2 p-5">
-        {userData?.recentArt?.map((art, index) => (
-          <ProductCard
-            key={art.productName}
-            {...art}
-            onAddToCart={() => onAddToCart(art)}
-          />
-        ))}
-      </div>
-
-      <div>
-      <Carousel>
+        <Carousel>
           <div>
             <img src="../assets/images/4.webp" />
             <p className="legend">Legend 1</p>
@@ -196,6 +189,18 @@ const Home = () => {
           </div>
         </Carousel>
       </div>
+
+      <div className="w-25 border m-2 p-5">
+        {userData?.recentArt?.map((art, index) => (
+          <ProductCard
+            key={art.productName}
+            {...art}
+            onAddToCart={() => onAddToCart(art)}
+          />
+        ))}
+      </div>
+
+      <div></div>
     </>
   );
 };
