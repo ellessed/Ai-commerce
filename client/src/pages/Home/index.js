@@ -16,10 +16,11 @@ import SearchBar from "../../components/SearchBar";
 import { FaSearch } from "react-icons/fa";
 //save artwork mutation
 import { SAVE_ARTWORK } from "../../utils/mutations";
+import { SAVE_PRODUCT } from "../../utils/mutations";
 import { useQuery, useMutation } from "@apollo/client";
 
 //get user
-import { QUERY_ME } from "../../utils/queries";
+import { QUERY_SEARCH } from "../../utils/queries";
 
 //import auth
 import Auth from "../../utils/auth";
@@ -34,9 +35,11 @@ const Home = () => {
 
   const [imageUrl, setImageUrl] = useState("");
 
+  const [artData, setArtData] = useState("");
+
   //get the current user's data
-  const { data } = useQuery(QUERY_ME);
-  const userData = data?.me || {};
+  const { data } = useQuery(QUERY_SEARCH);
+  const userData = data?.recentArt || {};
 
   const [saveArtwork] = useMutation(SAVE_ARTWORK);
   const onInputChange = (event) => {
@@ -80,23 +83,40 @@ const Home = () => {
       )
       .then((response) => {
         const newImageURL = response.data.data[0].url;
-        const artData = {
-          productName: newArtName,
-          imageUrl: newImageURL,
-          price: price,
-        };
-        setImageUrl(newImageURL);
-        setArtName(newArtName);
-        setInput("");
-        if (Auth.loggedIn()) {
-          try {
-            const { data } = saveArtwork({
-              variables: { artData: { ...artData } },
-            });
-          } catch (err) {
-            console.error(err);
-          }
-        }
+        const formData = new FormData();
+        formData.append("file", newImageURL);
+        formData.append("upload_preset", "ai-commerce");
+        axios
+          .post(
+            "https://api.cloudinary.com/v1_1/dejnb8hlo/image/upload",
+            formData
+          )
+          .then((response) => {
+            const cloudinaryURl = response.data.secure_url;
+            const newArtData = {
+              productName: newArtName,
+              imageUrl: cloudinaryURl,
+              price: price,
+            };
+            setImageUrl(cloudinaryURl);
+            setArtName(newArtName);
+
+            if (Auth.loggedIn()) {
+              setArtData(newArtData);
+              console.log(newArtData);
+              try {
+                const { data } = saveArtwork({
+                  variables: {
+                    productName: newArtName,
+                    imageUrl: cloudinaryURl,
+                    price: price,
+                  },
+                });
+              } catch (err) {
+                console.error(err);
+              }
+            }
+          });
       })
       .catch((err) => console.log(err));
   };
@@ -142,9 +162,11 @@ const Home = () => {
 
       <div className="w-25 border m-2 p-5">
         {userData?.recentArt?.map((art, index) => (
-          <div key={index}>
-            <img src={art.imageUrl} alt={`generated ${art.productName}`} />
-          </div>
+          <ProductCard
+            key={art.productName}
+            {...art}
+            onAddToCart={() => onAddToCart(art)}
+          />
         ))}
       </div>
     </>

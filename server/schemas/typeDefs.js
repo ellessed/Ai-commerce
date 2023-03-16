@@ -7,7 +7,7 @@ const typeDefs = gql`
     email: String
     password: String
     orders: [Order]!
-    recentArt: [Artwork]
+    recentArt: [Product]!
   }
 
   type Product {
@@ -15,12 +15,6 @@ const typeDefs = gql`
     productName: String
     imageUrl: String
     price: Int
-  }
-
-  type Artwork {
-    productName: String!
-    imageUrl: String!
-    price: Int!
   }
 
   type Category {
@@ -49,12 +43,6 @@ const typeDefs = gql`
     client_secret: String
   }
 
-  input ArtInput {
-    productName: String
-    imageUrl: String
-    price: Int
-  }
-
   type Query {
     users: [User]
     user(username: String!): User
@@ -65,6 +53,7 @@ const typeDefs = gql`
     product(productId: ID!): Product
     orders: [Order]
     order(orderId: ID!): Order
+    recentArt: User
   }
 
   type Mutation {
@@ -77,7 +66,7 @@ const typeDefs = gql`
       total: Int!
     ): Order
     checkout(amount: Int): Payment
-    saveArtwork(artData: ArtInput!): User
+    addRecentArt(productName: String!, imageUrl: String!, price: Int!): Product!
   }
 `;
 
