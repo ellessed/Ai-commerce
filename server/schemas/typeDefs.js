@@ -67,6 +67,7 @@ const typeDefs = gql`
     ): Order
     checkout(amount: Int): Payment
     addRecentArt(productName: String!, imageUrl: String!, price: Int!): Product!
+    addProduct(productName: String!, imageUrl: String!, price: Int): Product!
   }
 `;
 
