@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import {
   ApolloClient,
   InMemoryCache,
@@ -20,10 +21,10 @@ import Home from "./pages/Home";
 import Basket from "./pages/Basket";
 import Product from "./pages/Product";
 import ProductList from "./pages/ProductList";
-import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import Profile from "./pages/Profile";
 import Checkout from "./pages/Checkout";
+import auth from "./utils/auth";
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -52,6 +53,12 @@ const client = new ApolloClient({
 const stripePromise = loadStripe(`${process.env.REACT_APP_PUBLISHABLE_KEY}`);
 
 function App() {
+  const [isLogged, setIsLogged] = useState(false);
+
+  useEffect(() => {
+    setIsLogged(auth.loggedIn());
+  }, []);
+
   return (
     <ApolloProvider client={client}>
       <Elements stripe={stripePromise}>
@@ -60,8 +67,11 @@ function App() {
             <Layout>
               <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/signup" element={<Signup />} />
+                <Route
+                  path="/login"
+                  element={<Login setIsLogged={setIsLogged} />}
+                />
+                <Route path="/signup" element={<Login />} />
                 <Route path="/basket" element={<Basket />} />
                 <Route path="/me" element={<Home />} />
                 <Route path="/profiles/:username" element={<Profile />} />
@@ -70,7 +80,7 @@ function App() {
                 <Route
                   path="/checkout"
                   element={
-                    localStorage.getItem("id_token") ? (
+                    isLogged ? (
                       <Checkout />
                     ) : (
                       <Navigate to="/login" state={{ from: "/checkout" }} />
