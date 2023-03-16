@@ -36,6 +36,8 @@ const Login = (props) => {
 
       if (from) {
         navigate(from);
+      } else {
+        navigate("/payment");
       }
     } catch (e) {
       console.error(e);
