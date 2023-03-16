@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { useMutation } from "@apollo/client";
 import { ADD_USER } from "../../utils/mutations";
@@ -7,6 +7,17 @@ import { ADD_USER } from "../../utils/mutations";
 import Auth from "../../utils/auth";
 
 const Signup = () => {
+
+  const [formState, setFormState] = useState({
+    username: "",
+    email: "",
+    password: "",
+  });
+
+  const navigate = useNavigate();
+  const [addUser, { error, data }] = useMutation(ADD_USER);
+
+
   const handleChange = (event) => {
     const { name, value } = event.target;
 
@@ -15,6 +26,23 @@ const Signup = () => {
       [name]: value,
     });
   };
+
+
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+
+    try {
+      const { data } = await addUser({
+        variables: { ...formState },
+      });
+
+      Auth.login(data.addUser.token);
+      navigate("/");
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
 
   return (
     <main className="flex-row justify-center mb-4">
