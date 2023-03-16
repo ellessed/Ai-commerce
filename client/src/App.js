@@ -73,7 +73,7 @@ function App() {
                 />
                 <Route path="/signup" element={<Login />} />
                 <Route path="/basket" element={<Basket />} />
-                <Route path="/me" element={<Home />} />
+                <Route path="/me" element={<Profile />} />
                 <Route path="/profiles/:username" element={<Profile />} />
                 <Route path="/category/:category" element={<ProductList />} />
                 <Route path="/product/:productId" element={<Product />} />
