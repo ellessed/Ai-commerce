@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import {
   ApolloClient,
   InMemoryCache,
@@ -53,6 +54,12 @@ const client = new ApolloClient({
 const stripePromise = loadStripe(`${process.env.REACT_APP_PUBLISHABLE_KEY}`);
 
 function App() {
+  const [isLogged, setIsLogged] = useState(false);
+
+  useEffect(() => {
+    setIsLogged(auth.loggedIn());
+  }, []);
+
   return (
     <ApolloProvider client={client}>
       <Elements stripe={stripePromise}>
@@ -61,7 +68,10 @@ function App() {
             <Layout>
               <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/login" element={<Login />} />
+                <Route
+                  path="/login"
+                  element={<Login setIsLogged={setIsLogged} />}
+                />
                 <Route path="/signup" element={<Signup />} />
                 <Route path="/basket" element={<Basket />} />
                 <Route path="/me" element={<Home />} />
@@ -71,7 +81,7 @@ function App() {
                 <Route
                   path="/checkout"
                   element={
-                    auth.loggedIn() ? (
+                    isLogged ? (
                       <Checkout />
                     ) : (
                       <Navigate to="/login" state={{ from: "/checkout" }} />
