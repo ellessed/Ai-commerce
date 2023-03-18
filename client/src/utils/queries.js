@@ -37,11 +37,9 @@ export const QUERY_SINGLE_PRODUCT = gql`
   query Product($productId: ID!) {
     product(productId: $productId) {
       _id
-      createdAt
-      description
-      image
+      imageUrl
       price
-      title
+      productName
     }
   }
 `;
