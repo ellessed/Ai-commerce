@@ -47,7 +47,7 @@ const Header = () => {
               <Link
                 className="text-sm m-2"
                 to={{
-                  pathname: `/profile/${Auth.getProfile().data.username}`,
+                  pathname: `/profiles/${Auth.getProfile().data.username}`,
                   state: { username: Auth.getProfile().data.username },
                 }}
               >

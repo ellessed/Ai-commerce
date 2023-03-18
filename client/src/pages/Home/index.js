@@ -24,7 +24,6 @@ import { useQuery, useMutation } from "@apollo/client";
 
 //get user
 import { QUERY_SEARCH } from "../../utils/queries";
-import { GET_PRODUCT } from "../../utils/queries";
 
 //import auth
 import Auth from "../../utils/auth";
@@ -46,8 +45,6 @@ const Home = () => {
 
   const { data, refetch } = useQuery(QUERY_SEARCH);
   const userData = data?.recentArt || {};
-
-  const { productData } = useQuery(GET_PRODUCT);
 
   const [saveArtwork] = useMutation(SAVE_ARTWORK);
   const [addProduct] = useMutation(SAVE_PRODUCT);

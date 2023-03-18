@@ -60,17 +60,26 @@ export const QUERY_FEATURED_PRODUCTS = gql`
 `;
 
 export const QUERY_ME = gql`
-  query me {
+  query Me {
     me {
       _id
       username
       email
-      recentArt {
-        recentArt {
-          _id
-          productName
-          price
+      favourites {
+        _id
+        imageUrl
+        price
+        productName
+      }
+      orders {
+        _id
+        createdAt
+        customerAddress
+        customerName
+        items {
           imageUrl
+          price
+          productName
         }
       }
     }

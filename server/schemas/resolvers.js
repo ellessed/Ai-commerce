@@ -11,7 +11,9 @@ const resolvers = {
       return User.find();
     },
     user: async (parent, { username }) => {
-      return User.findOne({ username }).populate("orders");
+      return User.findOne({ username })
+        .populate("recentArt")
+        .populate("favourites");
     },
     categories: async () => {
       return Category.find();
@@ -33,7 +35,9 @@ const resolvers = {
     },
     me: async (parent, args, context) => {
       if (context.user) {
-        return User.findOne({ _id: context.user._id }).populate("orders");
+        return User.findOne({ _id: context.user._id })
+          .populate("recentArt")
+          .populate("favourites");
       }
       throw new AuthenticationError("You need to be logged in!");
     },
@@ -174,10 +178,17 @@ const resolvers = {
       }
       try {
         let productFound = await Product.findOne({ productName: productName });
+
         if (productFound) {
           const user = await User.findOneAndUpdate(
             { _id: context.user._id },
-            { $addToSet: { favourites: productFound._id } },
+            {
+              $addToSet: {
+                favourites: {
+                  _id: productFound._id,
+                },
+              },
+            },
             { new: true }
           ).populate("favourites.product");
 

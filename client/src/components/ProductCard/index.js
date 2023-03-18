@@ -1,9 +1,11 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { FaHeart } from "react-icons/fa";
 
 const ProductCard = (props) => {
   const { productName, imageUrl, price, _id, onAddToCart, onAddFavourite } =
     props;
+
+  const location = useLocation();
 
   return (
     <div className="border p-5 m-2 flex">
@@ -21,9 +23,11 @@ const ProductCard = (props) => {
           <button className="btn btn-primary" onClick={onAddToCart}>
             Add to Cart
           </button>
-          <button className="btn btn-primary" onClick={onAddFavourite}>
-            <FaHeart />
-          </button>
+          {location.pathname === "/" ? (
+            <button className="btn btn-primary" onClick={onAddFavourite}>
+              <FaHeart />
+            </button>
+          ) : null}
         </div>
       </div>
     </div>
