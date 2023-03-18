@@ -113,6 +113,17 @@ const resolvers = {
           "You must be logged in to perform this action"
         );
       }
+
+      let productFound = await Product.findOne({ productName: productName });
+      if (productFound) {
+        const productUpdate = await Product.findOneAndUpdate(
+          { productName: productName },
+          { imageUrl: imageUrl, price: price },
+          { new: true }
+        );
+        return productUpdate;
+      }
+
       const product = await Product.create({
         productName,
         imageUrl,
@@ -133,8 +144,18 @@ const resolvers = {
         throw new Error("Something went wrong");
       }
     },
-    addProduct: async (parent, { productName, imageUrl, price }, context) => {
+    addProduct: async (parent, { productName, imageUrl, price }) => {
       try {
+        let productFound = await Product.findOne({ productName: productName });
+        if (productFound) {
+          const productUpdate = await Product.findOneAndUpdate(
+            { productName: productName },
+            { imageUrl: imageUrl, price: price },
+            { new: true }
+          );
+          return productUpdate;
+        }
+
         const product = await Product.create({
           productName,
           imageUrl,
@@ -143,6 +164,28 @@ const resolvers = {
         return product;
       } catch (err) {
         throw new Error("Something went wrong");
+      }
+    },
+    addFavourite: async (parent, { productName }, context) => {
+      if (!context.user) {
+        throw new AuthenticationError(
+          "You must be logged in to add favourites"
+        );
+      }
+      try {
+        let productFound = await Product.findOne({ productName: productName });
+        if (productFound) {
+          const user = await User.findOneAndUpdate(
+            { _id: context.user._id },
+            { $addToSet: { favourites: productFound._id } },
+            { new: true }
+          ).populate("favourites.product");
+
+          return user;
+        }
+      } catch (err) {
+        console.error(err);
+        throw new Error("Failed to add favorite product");
       }
     },
   },

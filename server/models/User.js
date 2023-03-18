@@ -32,6 +32,12 @@ const userSchema = new Schema(
         ref: "Product",
       },
     ],
+    favourites: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Product",
+      },
+    ],
   },
   {
     toJSON: {

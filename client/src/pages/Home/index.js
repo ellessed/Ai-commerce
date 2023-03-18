@@ -15,13 +15,16 @@ import { useCart } from "../../context/CartContext";
 import SearchBar from "../../components/SearchBar";
 
 import { FaSearch } from "react-icons/fa";
+import { FaHeart } from "react-icons/fa";
 //save artwork mutation
 import { SAVE_ARTWORK } from "../../utils/mutations";
 import { SAVE_PRODUCT } from "../../utils/mutations";
+import { ADD_FAVOURITE } from "../../utils/mutations";
 import { useQuery, useMutation } from "@apollo/client";
 
 //get user
 import { QUERY_SEARCH } from "../../utils/queries";
+import { GET_PRODUCT } from "../../utils/queries";
 
 //import auth
 import Auth from "../../utils/auth";
@@ -34,16 +37,21 @@ const Home = () => {
   // create state for holding generated price
   const [price, setPrice] = useState("");
 
+  const [productId, setProductId] = useState("");
+
   const [imageUrl, setImageUrl] = useState("");
-
-  const [artData, setArtData] = useState("");
-
   //get the current user's data
-  const { data } = useQuery(QUERY_SEARCH);
+
+  const [latestUserData, setLatestUserData] = useState({});
+
+  const { data, refetch } = useQuery(QUERY_SEARCH);
   const userData = data?.recentArt || {};
+
+  const { productData } = useQuery(GET_PRODUCT);
 
   const [saveArtwork] = useMutation(SAVE_ARTWORK);
   const [addProduct] = useMutation(SAVE_PRODUCT);
+  const [addFavourite] = useMutation(ADD_FAVOURITE);
   const onInputChange = (event) => {
     setInput(event.target.value);
     const inputWords = input.trim().split(/\s+/).length;
@@ -104,10 +112,8 @@ const Home = () => {
             setArtName(newArtName);
 
             if (Auth.loggedIn()) {
-              setArtData(newArtData);
-              console.log(newArtData);
               try {
-                const { data } = saveArtwork({
+                const data = saveArtwork({
                   variables: {
                     productName: newArtName,
                     imageUrl: cloudinaryURl,
@@ -123,27 +129,15 @@ const Home = () => {
       .catch((err) => console.log(err));
   };
 
-  const addToCart = () => {
-    if (Auth.loggedIn()) {
-      saveArtwork({
-        variables: {
-          productName: artName,
-          imageUrl: imageUrl,
-          price: price,
-        },
+  const onAddFavourite = async (productName) => {
+    try {
+      const { data } = await addFavourite({
+        variables: { productName },
       });
-    } else {
-      addProduct({
-        variables: {
-          productName: artName,
-          imageUrl: imageUrl,
-          price: price,
-        },
-      });
+    } catch (err) {
+      console.log(err);
     }
-    onAddToCart(artData);
   };
-
   useEffect(() => {
     setArtName("");
   }, [input]);
@@ -173,6 +167,12 @@ const Home = () => {
           <button className="btn btn-dark cartButton" onClick={onAddToCart}>
             Add to Cart
           </button>
+          <button
+            className="searchButton"
+            onClick={() => onAddFavourite(artName)}
+          >
+            <FaHeart className="w-6 h-6 text-gray-400 search-icon" />
+          </button>
         </div>
         <Carousel>
           <div>
@@ -196,6 +196,7 @@ const Home = () => {
             key={art.productName}
             {...art}
             onAddToCart={() => onAddToCart(art)}
+            onAddFavourite={() => onAddFavourite(art.productName)}
           />
         ))}
       </div>

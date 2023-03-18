@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
+import { FaHeart } from "react-icons/fa";
 
 const ProductCard = (props) => {
-  console.log(props);
-  const { productName, imageUrl, price, _id, onAddToCart } = props;
+  const { productName, imageUrl, price, _id, onAddToCart, onAddFavourite } =
+    props;
 
   return (
     <div className="border p-5 m-2 flex">
@@ -19,6 +20,9 @@ const ProductCard = (props) => {
           <p className="text-lg mr-5">£{price}</p>
           <button className="btn btn-primary" onClick={onAddToCart}>
             Add to Cart
+          </button>
+          <button className="btn btn-primary" onClick={onAddFavourite}>
+            <FaHeart />
           </button>
         </div>
       </div>

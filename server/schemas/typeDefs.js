@@ -8,6 +8,7 @@ const typeDefs = gql`
     password: String
     orders: [Order]!
     recentArt: [Product]!
+    favourites: [Product]!
   }
 
   type Product {
@@ -68,6 +69,7 @@ const typeDefs = gql`
     checkout(amount: Int): Payment
     addRecentArt(productName: String!, imageUrl: String!, price: Int!): Product!
     addProduct(productName: String!, imageUrl: String!, price: Int): Product!
+    addFavourite(productName: String!): User!
   }
 `;
 
