@@ -1,6 +1,6 @@
 require("dotenv").config();
 const { AuthenticationError } = require("apollo-server-express");
-const { User, Product, Category, Order } = require("../models");
+const { User, Product, Order } = require("../models");
 const { signToken } = require("../utils/auth");
 
 const stripe = require("stripe")(process.env.PRIVATE_API_KEY);
@@ -14,12 +14,6 @@ const resolvers = {
       return User.findOne({ username })
         .populate("recentArt")
         .populate("favourites");
-    },
-    categories: async () => {
-      return Category.find();
-    },
-    category: async (parent, { name }) => {
-      return Category.findOne({ name: name }).populate("products");
     },
     products: async () => {
       return Product.find();

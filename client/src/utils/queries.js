@@ -10,29 +10,6 @@ export const QUERY_USER = gql`
   }
 `;
 
-export const QUERY_CATEGORIES = gql`
-  query Categories {
-    categories {
-      name
-    }
-  }
-`;
-
-export const QUERY_SINGLE_CATEGORY = gql`
-  query Category($name: String!) {
-    category(name: $name) {
-      name
-      products {
-        _id
-        title
-        description
-        image
-        price
-      }
-    }
-  }
-`;
-
 export const QUERY_SINGLE_PRODUCT = gql`
   query Product($productId: ID!) {
     product(productId: $productId) {

@@ -1,5 +1,5 @@
 import React from "react";
-import { Navigate, useParams } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import ProductCard from "../../components/ProductCard";
 import { useCart } from "../../context/CartContext";

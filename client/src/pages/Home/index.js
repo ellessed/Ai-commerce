@@ -1,6 +1,5 @@
 // UI Components
 import ProductCard from "../../components/ProductCard";
-import CategoriesLinks from "../../components/CategoriesLinks";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
@@ -31,19 +30,15 @@ import Auth from "../../utils/auth";
 const Home = () => {
   const { onAddToCart } = useCart();
   const [input, setInput] = useState("");
-  //create state for holding the generated name
+  //create state to hold the generated name
   const [artName, setArtName] = useState("");
-  // create state for holding generated price
+  // create state to hold generated price
   const [price, setPrice] = useState("");
-
-  const [productId, setProductId] = useState("");
-
+  // create state to hold generated image
   const [imageUrl, setImageUrl] = useState("");
   //get the current user's data
 
-  const [latestUserData, setLatestUserData] = useState({});
-
-  const { data, refetch } = useQuery(QUERY_SEARCH);
+  const { data } = useQuery(QUERY_SEARCH);
   const userData = data?.recentArt || {};
 
   const [saveArtwork] = useMutation(SAVE_ARTWORK);
@@ -100,11 +95,6 @@ const Home = () => {
           )
           .then((response) => {
             const cloudinaryURl = response.data.secure_url;
-            const newArtData = {
-              productName: newArtName,
-              imageUrl: cloudinaryURl,
-              price: price,
-            };
             setImageUrl(cloudinaryURl);
             setArtName(newArtName);
 
@@ -154,7 +144,7 @@ const Home = () => {
               <FaSearch className="w-6 h-6 text-gray-400 search-icon" />
             </button>
           </div>
-          {imageUrl && <img src={imageUrl} alt="input to image" />}
+          {imageUrl && <img src={imageUrl} alt={artName} />}
           {artName && (
             <>
               <p>{artName}</p>
