@@ -1,6 +1,5 @@
 // UI Components
 import ProductCard from "../../components/ProductCard";
-import CategoriesLinks from "../../components/CategoriesLinks";
 
 import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
@@ -23,24 +22,23 @@ const Product = () => {
   });
 
   const product = data?.product || {};
-  const productTitle = loading ? "Loading Product..." : data?.product.title;
+  console.log(product);
+  const productName = loading
+    ? "Loading Product..."
+    : data?.product.productName;
   console.log(`Product: products = ${data}`);
 
   return (
     <>
       <div className="p-5 m-2 border w-75">
-        <h1>{productTitle}</h1>
+        <h1>{productName}</h1>
         <div className="section-title">
           <ProductCard
-            key={product.title}
+            key={product.productName}
             {...product}
             onAddToCart={() => onAddToCart(product)}
           />
         </div>
-      </div>
-      <div className="p-5 m-2 border w-25">
-        <div className="section-title">Browse the Shop</div>
-        <CategoriesLinks />
       </div>
     </>
   );

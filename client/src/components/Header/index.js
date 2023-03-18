@@ -44,7 +44,13 @@ const Header = () => {
         <div className="login-section">
           {Auth.loggedIn() ? (
             <>
-              <Link className="text-sm m-2" to="/me">
+              <Link
+                className="text-sm m-2"
+                to={{
+                  pathname: `/profiles/${Auth.getProfile().data.username}`,
+                  state: { username: Auth.getProfile().data.username },
+                }}
+              >
                 {Auth.getProfile().data.username}
               </Link>
               <button className="text-sm m-2" onClick={logout}>

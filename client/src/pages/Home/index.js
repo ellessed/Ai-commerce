@@ -1,10 +1,10 @@
 // UI Components
 import ProductCard from "../../components/ProductCard";
-import CategoriesLinks from "../../components/CategoriesLinks";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
+import "../Home/home.css";
 
 // import { useQuery } from "@apollo/client";
 // import { QUERY_FEATURED_PRODUCTS } from "../../utils/queries";
@@ -14,9 +14,11 @@ import { useCart } from "../../context/CartContext";
 import SearchBar from "../../components/SearchBar";
 
 import { FaSearch } from "react-icons/fa";
+import { FaHeart } from "react-icons/fa";
 //save artwork mutation
 import { SAVE_ARTWORK } from "../../utils/mutations";
 import { SAVE_PRODUCT } from "../../utils/mutations";
+import { ADD_FAVOURITE } from "../../utils/mutations";
 import { useQuery, useMutation } from "@apollo/client";
 
 //get user
@@ -28,20 +30,20 @@ import Auth from "../../utils/auth";
 const Home = () => {
   const { onAddToCart } = useCart();
   const [input, setInput] = useState("");
-  //create state for holding the generated name
+  //create state to hold the generated name
   const [artName, setArtName] = useState("");
-  // create state for holding generated price
+  // create state to hold generated price
   const [price, setPrice] = useState("");
-
+  // create state to hold generated image
   const [imageUrl, setImageUrl] = useState("");
-
-  const [artData, setArtData] = useState("");
-
   //get the current user's data
+
   const { data } = useQuery(QUERY_SEARCH);
   const userData = data?.recentArt || {};
 
   const [saveArtwork] = useMutation(SAVE_ARTWORK);
+  const [addProduct] = useMutation(SAVE_PRODUCT);
+  const [addFavourite] = useMutation(ADD_FAVOURITE);
   const onInputChange = (event) => {
     setInput(event.target.value);
     const inputWords = input.trim().split(/\s+/).length;
@@ -93,19 +95,12 @@ const Home = () => {
           )
           .then((response) => {
             const cloudinaryURl = response.data.secure_url;
-            const newArtData = {
-              productName: newArtName,
-              imageUrl: cloudinaryURl,
-              price: price,
-            };
             setImageUrl(cloudinaryURl);
             setArtName(newArtName);
 
             if (Auth.loggedIn()) {
-              setArtData(newArtData);
-              console.log(newArtData);
               try {
-                const { data } = saveArtwork({
+                const data = saveArtwork({
                   variables: {
                     productName: newArtName,
                     imageUrl: cloudinaryURl,
@@ -120,44 +115,66 @@ const Home = () => {
       })
       .catch((err) => console.log(err));
   };
+
+  const onAddFavourite = async (productName) => {
+    try {
+      const { data } = await addFavourite({
+        variables: { productName },
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
   useEffect(() => {
     setArtName("");
   }, [input]);
   return (
     <>
       <div className="w-75 border m-2 p-5">
-        <SearchBar />
-        <Carousel>
-          <div>
-            <img src="./AvatarMaker.png" />
-            <p className="legend">Legend 1</p>
-          </div>
-          <div>
-            <img src="" />
-            <p className="legend">Legend 2</p>
-          </div>
-          <div>
-            <img src="" />
-            <p className="legend">Legend 3</p>
-          </div>
-        </Carousel>
         <div className="section-title">
-          <h2>Search for the art you want to see!</h2>
-          <div className="relative w-64">
-            <input type="text" onChange={onInputChange} placeholder="Search" />
-            <button onClick={onButtonSubmit}>
-              <FaSearch className="w-6 h-6 text-gray-400" />
+          <h2 className="search-h">Search for the art you want to see!</h2>
+          <div>
+            <input
+              className="inputSearch"
+              type="text"
+              onChange={onInputChange}
+              placeholder="Search"
+            />
+            <button className="searchButton" onClick={onButtonSubmit}>
+              <FaSearch className="w-6 h-6 text-gray-400 search-icon" />
             </button>
           </div>
-          {imageUrl && <img src={imageUrl} alt="input to image" />}
+          {imageUrl && <img src={imageUrl} alt={artName} />}
           {artName && (
             <>
               <p>{artName}</p>
               <p>Price: ${price}</p>
             </>
           )}
-          <button onClick={onAddToCart}>Add to Cart</button>
+          <button className="btn btn-dark cartButton" onClick={onAddToCart}>
+            Add to Cart
+          </button>
+          <button
+            className="searchButton"
+            onClick={() => onAddFavourite(artName)}
+          >
+            <FaHeart className="w-6 h-6 text-gray-400 search-icon" />
+          </button>
         </div>
+        <Carousel>
+          <div>
+            <img src="../assets/images/4.webp" />
+            <p className="legend">Legend 1</p>
+          </div>
+          <div>
+            <img src="../assets/images/5.webp" />
+            <p className="legend">Legend 2</p>
+          </div>
+          <div>
+            <img src="../assets/images/6.webp" />
+            <p className="legend">Legend 3</p>
+          </div>
+        </Carousel>
       </div>
 
       <div className="w-25 border m-2 p-5">
@@ -166,9 +183,12 @@ const Home = () => {
             key={art.productName}
             {...art}
             onAddToCart={() => onAddToCart(art)}
+            onAddFavourite={() => onAddFavourite(art.productName)}
           />
         ))}
       </div>
+
+      <div></div>
     </>
   );
 };

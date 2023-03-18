@@ -6,34 +6,6 @@ export const QUERY_USER = gql`
       _id
       username
       email
-      thoughts {
-        _id
-        thoughtText
-        createdAt
-      }
-    }
-  }
-`;
-
-export const QUERY_CATEGORIES = gql`
-  query Categories {
-    categories {
-      name
-    }
-  }
-`;
-
-export const QUERY_SINGLE_CATEGORY = gql`
-  query Category($name: String!) {
-    category(name: $name) {
-      name
-      products {
-        _id
-        title
-        description
-        image
-        price
-      }
     }
   }
 `;
@@ -42,11 +14,9 @@ export const QUERY_SINGLE_PRODUCT = gql`
   query Product($productId: ID!) {
     product(productId: $productId) {
       _id
-      createdAt
-      description
-      image
+      imageUrl
       price
-      title
+      productName
     }
   }
 `;
@@ -65,15 +35,27 @@ export const QUERY_FEATURED_PRODUCTS = gql`
 `;
 
 export const QUERY_ME = gql`
-  query me {
+  query Me {
     me {
       _id
       username
       email
-      recentArt {
-        productName
+      favourites {
+        _id
         imageUrl
         price
+        productName
+      }
+      orders {
+        _id
+        createdAt
+        customerAddress
+        customerName
+        items {
+          imageUrl
+          price
+          productName
+        }
       }
     }
   }

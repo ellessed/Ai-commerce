@@ -20,7 +20,6 @@ import Layout from "./components/Layout";
 import Home from "./pages/Home";
 import Basket from "./pages/Basket";
 import Product from "./pages/Product";
-import ProductList from "./pages/ProductList";
 import Login from "./pages/Login";
 import Profile from "./pages/Profile";
 import Checkout from "./pages/Checkout";
@@ -73,9 +72,7 @@ function App() {
                 />
                 <Route path="/signup" element={<Login />} />
                 <Route path="/basket" element={<Basket />} />
-                <Route path="/me" element={<Home />} />
                 <Route path="/profiles/:username" element={<Profile />} />
-                <Route path="/category/:category" element={<ProductList />} />
                 <Route path="/product/:productId" element={<Product />} />
                 <Route
                   path="/checkout"
