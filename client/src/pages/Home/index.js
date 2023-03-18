@@ -151,7 +151,10 @@ const Home = () => {
               <p>Price: ${price}</p>
             </>
           )}
-          <button className="btn btn-dark cartButton" onClick={onAddToCart}>
+          <button
+            className="btn btn-dark cartButton"
+            onClick={() => onAddToCart({ title: artName, imageUrl, price })}
+          >
             Add to Cart
           </button>
           <button
