@@ -178,6 +178,7 @@ const Home = () => {
             <p className="legend">Legend 3</p>
           </div>
         </Carousel>
+        <br /> {/* Add a page break here */}
       </div>
 
       <div className="w-25 border m-2 p-5">
