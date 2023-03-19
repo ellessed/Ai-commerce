@@ -5,7 +5,7 @@ import axios from "axios";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
 import "../Home/home.css";
-
+import GalleryGrid from "../../components/Gallery";
 // import { useQuery } from "@apollo/client";
 // import { QUERY_FEATURED_PRODUCTS } from "../../utils/queries";
 
@@ -179,6 +179,7 @@ const Home = () => {
           </div>
         </Carousel>
         <br /> {/* Add a page break here */}
+        <GalleryGrid />
       </div>
 
       <div className="w-25 border m-2 p-5">
