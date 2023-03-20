@@ -34,29 +34,36 @@ export const QUERY_FEATURED_PRODUCTS = gql`
   }
 `;
 
+export const QUERY_USER_FAVOURITES = gql`
+  query Query($productName: String!) {
+    getFavourites(productName: $productName)
+  }
+`;
+
 export const QUERY_ME = gql`
   query Me {
     me {
-      _id
-      username
-      email
       favourites {
         _id
-        imageUrl
-        price
-        productName
-      }
-      orders {
-        _id
-        createdAt
-        customerAddress
-        customerName
-        items {
+        isFavourite
+        productId {
+          _id
           imageUrl
           price
           productName
         }
       }
+      orders {
+        items {
+          _id
+          imageUrl
+          price
+          productName
+        }
+      }
+      _id
+      username
+      email
     }
   }
 `;

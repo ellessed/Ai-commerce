@@ -1,11 +1,39 @@
-import { Link, useLocation } from "react-router-dom";
-import { FaHeart } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import { FaHeart, FaRegHeart } from "react-icons/fa";
+import { QUERY_USER_FAVOURITES } from "../../utils/queries";
+import { ADD_FAVOURITE, REMOVE_FAVOURITE } from "../../utils/mutations";
+import { useQuery, useMutation } from "@apollo/client";
 
 const ProductCard = (props) => {
-  const { productName, imageUrl, price, _id, onAddToCart, onAddFavourite } =
-    props;
+  const { productName, imageUrl, price, _id, onAddToCart } = props;
+  //query user's favourites by the product name
+  const { data } = useQuery(QUERY_USER_FAVOURITES, {
+    variables: { productName },
+  });
+  //initialize the add favourite mutation and query the user's favourites by the product name
+  const [addFavourite] = useMutation(ADD_FAVOURITE, {
+    refetchQueries: [
+      { query: QUERY_USER_FAVOURITES, variables: { productName } },
+    ],
+  });
+  //initialize the removefavourite mutation and query the user's favourites by the product name
+  const [removeFavourite] = useMutation(REMOVE_FAVOURITE, {
+    refetchQueries: [
+      { query: QUERY_USER_FAVOURITES, variables: { productName } },
+    ],
+  });
+  //define is favourites or return false if isFavourites boolean is false
+  const isFavourite = data?.getFavourites ?? false;
 
-  const location = useLocation();
+  const handleToggleFavourite = () => {
+    if (isFavourite) {
+      //remove favourite from user's favourites
+      removeFavourite({ variables: { productName } });
+    } else {
+      //add a new favourite to the user's favourites
+      addFavourite({ variables: { productName } });
+    }
+  };
 
   return (
     <div className="border p-5 m-2 flex">
@@ -23,11 +51,9 @@ const ProductCard = (props) => {
           <button className="btn btn-primary" onClick={onAddToCart}>
             Add to Cart
           </button>
-          {location.pathname === "/" ? (
-            <button className="btn btn-primary" onClick={onAddFavourite}>
-              <FaHeart />
-            </button>
-          ) : null}
+          <button className="btn btn-primary" onClick={handleToggleFavourite}>
+            {isFavourite ? <FaHeart /> : <FaRegHeart />}
+          </button>
         </div>
       </div>
     </div>

@@ -2,23 +2,16 @@
 import ProductCard from "../../components/ProductCard";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import "../Home/home.css";
 
-// import { useQuery } from "@apollo/client";
-// import { QUERY_FEATURED_PRODUCTS } from "../../utils/queries";
-
 // Shopping Cart
 import { useCart } from "../../context/CartContext";
-import SearchBar from "../../components/SearchBar";
 
-import { FaSearch } from "react-icons/fa";
-import { FaHeart } from "react-icons/fa";
+import { FaSearch, FaHeart } from "react-icons/fa";
 //save artwork mutation
-import { SAVE_ARTWORK } from "../../utils/mutations";
-import { SAVE_PRODUCT } from "../../utils/mutations";
-import { ADD_FAVOURITE } from "../../utils/mutations";
+import { SAVE_ARTWORK, SAVE_PRODUCT } from "../../utils/mutations";
 import { useQuery, useMutation } from "@apollo/client";
 
 //get user
@@ -37,13 +30,12 @@ const Home = () => {
   // create state to hold generated image
   const [imageUrl, setImageUrl] = useState("");
   //get the current user's data
-
-  const { data } = useQuery(QUERY_SEARCH);
+  const { data, refetch } = useQuery(QUERY_SEARCH);
   const userData = data?.recentArt || {};
+  const [loading, setLoading] = useState(false);
 
   const [saveArtwork] = useMutation(SAVE_ARTWORK);
   const [addProduct] = useMutation(SAVE_PRODUCT);
-  const [addFavourite] = useMutation(ADD_FAVOURITE);
   const onInputChange = (event) => {
     setInput(event.target.value);
     const inputWords = input.trim().split(/\s+/).length;
@@ -65,8 +57,9 @@ const Home = () => {
       Math.random() < 0.5 ? adjectives[randomIndex] : nouns[randomIndex];
 
     const newArtName = `${randomWord} ${input}`;
+    //set loading true
+    setLoading(true);
     axios
-
       .post(
         "https://api.openai.com/v1/images/generations",
         {
@@ -110,24 +103,27 @@ const Home = () => {
               } catch (err) {
                 console.error(err);
               }
+            } else {
+              addProduct({
+                variables: {
+                  productName: newArtName,
+                  imageUrl: cloudinaryURl,
+                  price: price,
+                },
+              });
             }
+            setLoading(false);
           });
       })
       .catch((err) => console.log(err));
   };
+  //refetch userdata and populate lastest search
+  refetch();
 
-  const onAddFavourite = async (productName) => {
-    try {
-      const { data } = await addFavourite({
-        variables: { productName },
-      });
-    } catch (err) {
-      console.log(err);
-    }
-  };
   useEffect(() => {
     setArtName("");
   }, [input]);
+
   return (
     <>
       <div className="w-75 border m-2 p-5">
@@ -144,25 +140,38 @@ const Home = () => {
               <FaSearch className="w-6 h-6 text-gray-400 search-icon" />
             </button>
           </div>
-          {imageUrl && <img src={imageUrl} alt={artName} />}
-          {artName && (
-            <>
-              <p>{artName}</p>
-              <p>Price: ${price}</p>
-            </>
-          )}
-          <button
-            className="btn btn-dark cartButton"
-            onClick={() => onAddToCart({ title: artName, imageUrl, price })}
-          >
-            Add to Cart
-          </button>
-          <button
-            className="searchButton"
-            onClick={() => onAddFavourite(artName)}
-          >
-            <FaHeart className="w-6 h-6 text-gray-400 search-icon" />
-          </button>
+          <div>
+            {loading ? (
+              <div>Loading...</div>
+            ) : (
+              <>
+                {imageUrl && (
+                  <>
+                    <img src={imageUrl} alt={artName} />
+                    <p>{artName}</p>
+                    <p>Price: ${price}</p>
+                    {Auth.loggedIn() && (
+                      <button>
+                        <FaHeart className="w-6 h-6 text-gray-400 favourite-icon" />
+                      </button>
+                    )}
+                    <button
+                      className="btn btn-dark cartButton"
+                      onClick={() =>
+                        onAddToCart({
+                          name: artName,
+                          image: imageUrl,
+                          price: price,
+                        })
+                      }
+                    >
+                      Add to Cart
+                    </button>
+                  </>
+                )}
+              </>
+            )}
+          </div>
         </div>
         <Carousel>
           <div>
@@ -183,15 +192,12 @@ const Home = () => {
       <div className="w-25 border m-2 p-5">
         {userData?.recentArt?.map((art, index) => (
           <ProductCard
-            key={art.productName}
+            key={art._id}
             {...art}
             onAddToCart={() => onAddToCart(art)}
-            onAddFavourite={() => onAddFavourite(art.productName)}
           />
         ))}
       </div>
-
-      <div></div>
     </>
   );
 };

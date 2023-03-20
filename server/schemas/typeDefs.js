@@ -8,7 +8,7 @@ const typeDefs = gql`
     password: String
     orders: [Order]!
     recentArt: [Product]!
-    favourites: [Product]!
+    favourites: [Favourite]!
   }
 
   type Product {
@@ -37,6 +37,12 @@ const typeDefs = gql`
     client_secret: String
   }
 
+  type Favourite {
+    _id: ID!
+    productId: Product!
+    isFavourite: Boolean!
+  }
+
   type Query {
     users: [User]
     user(username: String!): User
@@ -46,6 +52,7 @@ const typeDefs = gql`
     orders: [Order]
     order(orderId: ID!): Order
     recentArt: User
+    getFavourites(productName: String!): Boolean
   }
 
   type Mutation {
@@ -61,6 +68,7 @@ const typeDefs = gql`
     addRecentArt(productName: String!, imageUrl: String!, price: Int!): Product!
     addProduct(productName: String!, imageUrl: String!, price: Int): Product!
     addFavourite(productName: String!): User!
+    removeFavourite(productName: String!): User!
   }
 `;
 

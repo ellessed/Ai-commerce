@@ -1,6 +1,6 @@
 import React from "react";
 import { Navigate } from "react-router-dom";
-import { useQuery } from "@apollo/client";
+import { useQuery, useMutation } from "@apollo/client";
 import ProductCard from "../../components/ProductCard";
 import { useCart } from "../../context/CartContext";
 
@@ -10,6 +10,7 @@ import Auth from "../../utils/auth";
 
 const Profile = (props) => {
   const { username: userParam } = props;
+  console.log(props);
   const { onAddToCart } = useCart();
 
   const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
@@ -49,11 +50,14 @@ const Profile = (props) => {
           className="col-12 col-md-10 mb-3 p-3"
           style={{ border: "1px dotted #1a1a1a" }}
         ></div>
-        {user?.favourites?.map((art, index) => (
+        {user?.favourites?.map((fav, index) => (
           <ProductCard
-            key={art.productName}
-            {...art}
-            onAddToCart={() => onAddToCart(art)}
+            key={fav.productId._id}
+            productName={fav.productId.productName}
+            price={fav.productId.price}
+            imageUrl={fav.productId.imageUrl}
+            _id={fav.productId._id}
+            onAddToCart={() => onAddToCart(fav.productId)}
           />
         ))}
       </div>
