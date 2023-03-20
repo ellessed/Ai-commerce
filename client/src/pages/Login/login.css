@@ -1,0 +1,16 @@
+.form-input {
+    margin: 10px;
+    border-color: var(--hover);
+    border-style: solid;
+    color: var(--dark);
+    padding: 5px;
+    font-size: 18px;
+}
+
+input:focus {
+    outline: none;
+}
+
+.card-header {
+    font-size: 20px;
+}

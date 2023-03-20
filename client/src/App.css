@@ -24,8 +24,7 @@
 .container {
   width: 80%;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  flex-direction: column;
   flex: 1;
 }
 
@@ -119,21 +118,19 @@
 }
 
 .btn {
-  background-color: rgb(195, 195, 188);
-  color: white;
+  color: var(--light);
+  background-color: var(--dark);
   border: none;
   padding: 10px;
-  border-radius: 15%;
   text-align: center;
   text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
+  font-size: 18px;
   margin: 4px 2px;
   cursor: pointer;
 }
 
-.btn-primary {
-  background-color: #61dafb;
+.btn:hover {
+  background-color: var(--hover);
 }
 
 .product-details {
@@ -148,7 +145,6 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-
   height: auto;
   min-height: 150px;
 }

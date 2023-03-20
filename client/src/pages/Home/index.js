@@ -11,7 +11,6 @@ import GalleryGrid from "../../components/Gallery";
 
 // Shopping Cart
 import { useCart } from "../../context/CartContext";
-import SearchBar from "../../components/SearchBar";
 
 import { FaSearch } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa";
@@ -130,20 +129,16 @@ const Home = () => {
   }, [input]);
   return (
     <>
-      <div className="w-75 border m-2 p-5">
-        <div className="section-title">
+      <div className="home-container">
+        <div className="left-section">
           <h2 className="search-h">Search for the art you want to see!</h2>
-          <div>
-            <input
-              className="inputSearch"
-              type="text"
-              onChange={onInputChange}
-              placeholder="Search"
-            />
+          <div className="search-section">
+            <input className="inputSearch" type="text" onChange={onInputChange} placeholder="Search" />
             <button className="searchButton" onClick={onButtonSubmit}>
               <FaSearch className="w-6 h-6 text-gray-400 search-icon" />
             </button>
           </div>
+          <div className="searchedImage">
           {imageUrl && <img src={imageUrl} alt={artName} />}
           {artName && (
             <>
@@ -151,31 +146,53 @@ const Home = () => {
               <p>Price: ${price}</p>
             </>
           )}
-          <button
-            className="btn btn-dark cartButton"
-            onClick={() => onAddToCart({ title: artName, imageUrl, price })}
-          >
-            Add to Cart
-          </button>
-          <button
-            className="searchButton"
-            onClick={() => onAddFavourite(artName)}
-          >
-            <FaHeart className="w-6 h-6 text-gray-400 search-icon" />
-          </button>
+          </div>
+          <div className="cartButton">
+          <button className="cartButton" onClick={onAddToCart}>Add to Cart</button>
+          </div>
         </div>
-        <Carousel>
-          <div>
-            <img src="../assets/images/4.webp" />
-            <p className="legend">Legend 1</p>
+        <div className="right-section">
+          <h2 className="right-h">Your Recent Artwork!</h2>
+        <div className="recent-img">
+        {userData?.recentArt?.map((art, index) => (
+          <ProductCard
+            key={art.productName}
+            {...art}
+            onAddToCart={() => onAddToCart(art)}
+          />
+        ))}
+        </div>
+        </div>
+      </div>
+
+      <div>
+        <h3 className="carousel-h">Browse Arty Intelligence's Maskarade Masterpieces!</h3>
+      </div>
+    <div className="carousel-container">
+      <Carousel
+      showStatus={false}
+      showArrows={true}
+      showThumbs={false}
+      infiniteLoop={true}
+      showIndicators={false}
+      slidesToShow={3}>
+
+          <div className="carousel">
+            <img className="carousel-img" src="../assets/images/4.webp" />
+            <div className="legend-section">
+            <p className="price">{artName}${price}</p>
+            <button className="cartButton" onClick={onAddToCart}>Add to Cart</button>
+            </div>
           </div>
-          <div>
-            <img src="../assets/images/5.webp" />
-            <p className="legend">Legend 2</p>
+          <div className="carousel">
+            <img className="carousel-img" src="../assets/images/5.webp" />
+            <p className="price">{artName}${price}</p>
+            <button className="cartButton" onClick={onAddToCart}>Add to Cart</button>
           </div>
-          <div>
-            <img src="../assets/images/6.webp" />
-            <p className="legend">Legend 3</p>
+          <div className="carousel">
+            <img className="carousel-img" src="../assets/images/6.webp" />
+            <p className="price">{artName}${price}</p>
+            <button className="cartButton" onClick={onAddToCart}>Add to Cart</button>
           </div>
         </Carousel>
         <br /> {/* Add a page break here */}
