@@ -5,6 +5,9 @@ import axios from "axios";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import "../Home/home.css";
+import GalleryGrid from "../../components/Gallery";
+// import { useQuery } from "@apollo/client";
+// import { QUERY_FEATURED_PRODUCTS } from "../../utils/queries";
 
 // Shopping Cart
 import { useCart } from "../../context/CartContext";
@@ -126,67 +129,74 @@ const Home = () => {
 
   return (
     <>
-      <div className="w-75 border m-2 p-5">
-        <div className="section-title">
+      <div className="home-container">
+        <div className="left-section">
           <h2 className="search-h">Search for the art you want to see!</h2>
-          <div>
-            <input
-              className="inputSearch"
-              type="text"
-              onChange={onInputChange}
-              placeholder="Search"
-            />
+          <div className="search-section">
+            <input className="inputSearch" type="text" onChange={onInputChange} placeholder="Search" />
             <button className="searchButton" onClick={onButtonSubmit}>
               <FaSearch className="w-6 h-6 text-gray-400 search-icon" />
             </button>
           </div>
-          <div>
-            {loading ? (
-              <div>Loading...</div>
-            ) : (
-              <>
-                {imageUrl && (
-                  <>
-                    <img src={imageUrl} alt={artName} />
-                    <p>{artName}</p>
-                    <p>Price: ${price}</p>
-                    {Auth.loggedIn() && (
-                      <button>
-                        <FaHeart className="w-6 h-6 text-gray-400 favourite-icon" />
-                      </button>
-                    )}
-                    <button
-                      className="btn btn-dark cartButton"
-                      onClick={() =>
-                        onAddToCart({
-                          name: artName,
-                          image: imageUrl,
-                          price: price,
-                        })
-                      }
-                    >
-                      Add to Cart
-                    </button>
-                  </>
-                )}
-              </>
-            )}
+          <div className="searchedImage">
+          {imageUrl && <img src={imageUrl} alt={artName} />}
+          {artName && (
+            <>
+              <p>{artName}</p>
+              <p>Price: ${price}</p>
+            </>
+          )}
+          </div>
+          <div className="cartButton">
+          <button className="cartButton" onClick={onAddToCart}>Add to Cart</button>
           </div>
         </div>
-        <Carousel>
-          <div>
-            <img src="../assets/images/4.webp" />
-            <p className="legend">Legend 1</p>
+        <div className="right-section">
+          <h2 className="right-h">Your Recent Artwork!</h2>
+        <div className="recent-img">
+        {userData?.recentArt?.map((art, index) => (
+          <ProductCard
+            key={art.productName}
+            {...art}
+            onAddToCart={() => onAddToCart(art)}
+          />
+        ))}
+        </div>
+        </div>
+      </div>
+
+      <div>
+        <h3 className="carousel-h">Browse Arty Intelligence's Maskarade Masterpieces!</h3>
+      </div>
+    <div className="carousel-container">
+      <Carousel
+      showStatus={false}
+      showArrows={true}
+      showThumbs={false}
+      infiniteLoop={true}
+      showIndicators={false}
+      slidesToShow={3}>
+
+          <div className="carousel">
+            <img className="carousel-img" src="../assets/images/4.webp" />
+            <div className="legend-section">
+            <p className="price">{artName}${price}</p>
+            <button className="cartButton" onClick={onAddToCart}>Add to Cart</button>
+            </div>
           </div>
-          <div>
-            <img src="../assets/images/5.webp" />
-            <p className="legend">Legend 2</p>
+          <div className="carousel">
+            <img className="carousel-img" src="../assets/images/5.webp" />
+            <p className="price">{artName}${price}</p>
+            <button className="cartButton" onClick={onAddToCart}>Add to Cart</button>
           </div>
-          <div>
-            <img src="../assets/images/6.webp" />
-            <p className="legend">Legend 3</p>
+          <div className="carousel">
+            <img className="carousel-img" src="../assets/images/6.webp" />
+            <p className="price">{artName}${price}</p>
+            <button className="cartButton" onClick={onAddToCart}>Add to Cart</button>
           </div>
         </Carousel>
+        <br /> {/* Add a page break here */}
+        <GalleryGrid />
       </div>
 
       <div className="w-25 border m-2 p-5">
