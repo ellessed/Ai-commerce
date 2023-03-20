@@ -4,6 +4,7 @@ import { useMutation } from "@apollo/client";
 import { LOGIN_USER, ADD_USER } from "../../utils/mutations";
 
 import Auth from "../../utils/auth";
+import "../Login/login.css";
 
 const Login = ({ setIsLogged }) => {
   const [formState, setFormState] = useState({ email: "", password: "" });
@@ -78,7 +79,7 @@ const Login = ({ setIsLogged }) => {
       <main className="flex-row justify-center mb-4">
         <div className="col-12 col-lg-10">
           <div className="card">
-            <h4 className="card-header bg-dark text-light p-2">Login</h4>
+            <h4 className="card-header">Login</h4>
             <div className="card-body">
               {data ? (
                 <p>
@@ -104,7 +105,7 @@ const Login = ({ setIsLogged }) => {
                     onChange={handleChange}
                   />
                   <button
-                    className="btn btn-block btn-primary"
+                    className="btn"
                     style={{ cursor: "pointer" }}
                     type="submit"
                   >
@@ -126,7 +127,7 @@ const Login = ({ setIsLogged }) => {
       <main className="flex-row justify-center mb-4">
         <div className="col-12 col-lg-10">
           <div className="card">
-            <h4 className="card-header bg-dark text-light p-2">Sign Up</h4>
+            <h4 className="card-header">Sign Up</h4>
             <div className="card-body">
               {datas ? (
                 <p>
@@ -160,7 +161,7 @@ const Login = ({ setIsLogged }) => {
                     onChange={handleChange}
                   />
                   <button
-                    className="btn btn-block btn-primary"
+                    className="btn"
                     style={{ cursor: "pointer" }}
                     type="submit"
                   >
