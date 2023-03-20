@@ -7,51 +7,50 @@ import Auth from "../../utils/auth";
 import "../Login/login.css";
 
 const Login = ({ setIsLogged }) => {
-  const [formState, setFormState] = useState({ email: "", password: "" });
-  const [login, { error, data }] = useMutation(LOGIN_USER);
+  const [loginFormState, setLoginFormState] = useState({
+    email: "",
+    password: "",
+  });
+  const [login, { loginError, loginData }] = useMutation(LOGIN_USER);
 
-  const [signUpState, setSignUpState] = useState({
+  const [signUpFormState, setSignUpFormState] = useState({
     username: "",
     email: "",
     password: "",
   });
-  const [addUser, { errors, datas }] = useMutation(ADD_USER);
+  const [addUser, { signUpError, signUpData }] = useMutation(ADD_USER);
 
   const { state } = useLocation();
   const navigate = useNavigate();
   const { from = null } = state || {};
 
-  // update state based on form input changes
-  const handleChange = (event) => {
+  // update state based on login form input changes
+  const handleLoginFormChange = (event) => {
     const { name, value } = event.target;
 
-    setFormState({
-      ...formState,
+    setLoginFormState({
+      ...loginFormState,
       [name]: value,
     });
   };
 
-  const handleSignUpSubmit = async (event) => {
-    event.preventDefault();
-    console.log(formState);
+  // update state based on sign up form input changes
+  const handleSignUpFormChange = (event) => {
+    const { name, value } = event.target;
 
-    try {
-      const { data } = await addUser({
-        variables: { ...formState },
-      });
-
-      Auth.login(data.addUser.token);
-    } catch (e) {
-      console.error(e);
-    }
+    setSignUpFormState({
+      ...signUpFormState,
+      [name]: value,
+    });
   };
-  // submit form
-  const handleFormSubmit = async (event) => {
+
+  // submit login form
+  const handleLoginFormSubmit = async (event) => {
     event.preventDefault();
-    console.log(formState);
+    console.log(loginFormState);
     try {
       const { data } = await login({
-        variables: { ...formState },
+        variables: { ...loginFormState },
       });
 
       Auth.login(data.login.token);
@@ -67,7 +66,36 @@ const Login = ({ setIsLogged }) => {
     }
 
     // clear form values
-    setFormState({
+    setLoginFormState({
+      email: "",
+      password: "",
+    });
+  };
+
+  // submit sign up form
+  const handleSignUpFormSubmit = async (event) => {
+    event.preventDefault();
+    console.log(signUpFormState);
+
+    try {
+      const { data } = await addUser({
+        variables: { ...signUpFormState },
+      });
+
+      Auth.login(data.addUser.token);
+      setIsLogged(Auth.loggedIn());
+      if (from) {
+        navigate(from);
+      } else {
+        navigate("/");
+      }
+    } catch (e) {
+      console.error(e);
+    }
+
+    // clear form values
+    setSignUpFormState({
+      username: "",
       email: "",
       password: "",
     });
@@ -81,28 +109,28 @@ const Login = ({ setIsLogged }) => {
           <div className="card">
             <h4 className="card-header">Login</h4>
             <div className="card-body">
-              {data ? (
+              {loginData ? (
                 <p>
                   Success! You may now head{" "}
                   <Link to="/">back to the homepage.</Link>
                 </p>
               ) : (
-                <form onSubmit={handleFormSubmit}>
+                <form onSubmit={handleLoginFormSubmit}>
                   <input
                     className="form-input"
                     placeholder="Your email"
                     name="email"
                     type="email"
-                    value={formState.email}
-                    onChange={handleChange}
+                    value={loginFormState.email}
+                    onChange={handleLoginFormChange}
                   />
                   <input
                     className="form-input"
                     placeholder="******"
                     name="password"
                     type="password"
-                    value={formState.password}
-                    onChange={handleChange}
+                    value={loginFormState.password}
+                    onChange={handleLoginFormChange}
                   />
                   <button
                     className="btn"
@@ -114,9 +142,9 @@ const Login = ({ setIsLogged }) => {
                 </form>
               )}
 
-              {error && (
+              {loginError && (
                 <div className="my-3 p-3 bg-danger text-white">
-                  {error.message}
+                  {loginError.message}
                 </div>
               )}
             </div>
@@ -129,36 +157,36 @@ const Login = ({ setIsLogged }) => {
           <div className="card">
             <h4 className="card-header">Sign Up</h4>
             <div className="card-body">
-              {datas ? (
+              {signUpData ? (
                 <p>
                   Success! You may now head{" "}
                   <Link to="/">back to the homepage.</Link>
                 </p>
               ) : (
-                <form onSubmit={handleSignUpSubmit}>
+                <form onSubmit={handleSignUpFormSubmit}>
                   <input
                     className="form-input"
                     placeholder="Your username"
                     name="username"
                     type="text"
-                    value={signUpState.name}
-                    onChange={handleChange}
+                    value={signUpFormState.username}
+                    onChange={handleSignUpFormChange}
                   />
                   <input
                     className="form-input"
                     placeholder="Your email"
                     name="email"
                     type="email"
-                    value={signUpState.email}
-                    onChange={handleChange}
+                    value={signUpFormState.email}
+                    onChange={handleSignUpFormChange}
                   />
                   <input
                     className="form-input"
                     placeholder="******"
                     name="password"
                     type="password"
-                    value={signUpState.password}
-                    onChange={handleChange}
+                    value={signUpFormState.password}
+                    onChange={handleSignUpFormChange}
                   />
                   <button
                     className="btn"
@@ -170,9 +198,9 @@ const Login = ({ setIsLogged }) => {
                 </form>
               )}
 
-              {errors && (
+              {signUpError && (
                 <div className="my-3 p-3 bg-danger text-white">
-                  {errors.message}
+                  {signUpError.message}
                 </div>
               )}
             </div>

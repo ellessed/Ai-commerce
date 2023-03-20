@@ -1,12 +1,11 @@
 // UI Components
 import ProductCard from "../../components/ProductCard";
-import CategoriesLinks from "../../components/CategoriesLinks";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
 import "../Home/home.css";
-
+import GalleryGrid from "../../components/Gallery";
 // import { useQuery } from "@apollo/client";
 // import { QUERY_FEATURED_PRODUCTS } from "../../utils/queries";
 
@@ -14,9 +13,11 @@ import "../Home/home.css";
 import { useCart } from "../../context/CartContext";
 
 import { FaSearch } from "react-icons/fa";
+import { FaHeart } from "react-icons/fa";
 //save artwork mutation
 import { SAVE_ARTWORK } from "../../utils/mutations";
 import { SAVE_PRODUCT } from "../../utils/mutations";
+import { ADD_FAVOURITE } from "../../utils/mutations";
 import { useQuery, useMutation } from "@apollo/client";
 
 //get user
@@ -28,21 +29,20 @@ import Auth from "../../utils/auth";
 const Home = () => {
   const { onAddToCart } = useCart();
   const [input, setInput] = useState("");
-  //create state for holding the generated name
+  //create state to hold the generated name
   const [artName, setArtName] = useState("");
-  // create state for holding generated price
+  // create state to hold generated price
   const [price, setPrice] = useState("");
-
+  // create state to hold generated image
   const [imageUrl, setImageUrl] = useState("");
-
-  const [artData, setArtData] = useState("");
-
   //get the current user's data
+
   const { data } = useQuery(QUERY_SEARCH);
   const userData = data?.recentArt || {};
 
   const [saveArtwork] = useMutation(SAVE_ARTWORK);
   const [addProduct] = useMutation(SAVE_PRODUCT);
+  const [addFavourite] = useMutation(ADD_FAVOURITE);
   const onInputChange = (event) => {
     setInput(event.target.value);
     const inputWords = input.trim().split(/\s+/).length;
@@ -94,19 +94,12 @@ const Home = () => {
           )
           .then((response) => {
             const cloudinaryURl = response.data.secure_url;
-            const newArtData = {
-              productName: newArtName,
-              imageUrl: cloudinaryURl,
-              price: price,
-            };
             setImageUrl(cloudinaryURl);
             setArtName(newArtName);
 
             if (Auth.loggedIn()) {
-              setArtData(newArtData);
-              console.log(newArtData);
               try {
-                const { data } = saveArtwork({
+                const data = saveArtwork({
                   variables: {
                     productName: newArtName,
                     imageUrl: cloudinaryURl,
@@ -122,27 +115,15 @@ const Home = () => {
       .catch((err) => console.log(err));
   };
 
-  const addToCart = () => {
-    if (Auth.loggedIn()) {
-      saveArtwork({
-        variables: {
-          productName: artName,
-          imageUrl: imageUrl,
-          price: price,
-        },
+  const onAddFavourite = async (productName) => {
+    try {
+      const { data } = await addFavourite({
+        variables: { productName },
       });
-    } else {
-      addProduct({
-        variables: {
-          productName: artName,
-          imageUrl: imageUrl,
-          price: price,
-        },
-      });
+    } catch (err) {
+      console.log(err);
     }
-    onAddToCart(artData);
   };
-
   useEffect(() => {
     setArtName("");
   }, [input]);
@@ -158,7 +139,7 @@ const Home = () => {
             </button>
           </div>
           <div className="searchedImage">
-          {imageUrl && <img src={imageUrl} alt="input to image" />}
+          {imageUrl && <img src={imageUrl} alt={artName} />}
           {artName && (
             <>
               <p>{artName}</p>
@@ -214,7 +195,22 @@ const Home = () => {
             <button className="cartButton" onClick={onAddToCart}>Add to Cart</button>
           </div>
         </Carousel>
+        <br /> {/* Add a page break here */}
+        <GalleryGrid />
       </div>
+
+      <div className="w-25 border m-2 p-5">
+        {userData?.recentArt?.map((art, index) => (
+          <ProductCard
+            key={art.productName}
+            {...art}
+            onAddToCart={() => onAddToCart(art)}
+            onAddFavourite={() => onAddFavourite(art.productName)}
+          />
+        ))}
+      </div>
+
+      <div></div>
     </>
   );
 };

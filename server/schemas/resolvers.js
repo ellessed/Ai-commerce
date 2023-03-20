@@ -1,6 +1,6 @@
 require("dotenv").config();
 const { AuthenticationError } = require("apollo-server-express");
-const { User, Product, Category, Order } = require("../models");
+const { User, Product, Order } = require("../models");
 const { signToken } = require("../utils/auth");
 
 const stripe = require("stripe")(process.env.PRIVATE_API_KEY);
@@ -11,13 +11,9 @@ const resolvers = {
       return User.find();
     },
     user: async (parent, { username }) => {
-      return User.findOne({ username }).populate("orders");
-    },
-    categories: async () => {
-      return Category.find();
-    },
-    category: async (parent, { name }) => {
-      return Category.findOne({ name: name }).populate("products");
+      return User.findOne({ username })
+        .populate("recentArt")
+        .populate("favourites");
     },
     products: async () => {
       return Product.find();
@@ -33,7 +29,9 @@ const resolvers = {
     },
     me: async (parent, args, context) => {
       if (context.user) {
-        return User.findOne({ _id: context.user._id }).populate("orders");
+        return User.findOne({ _id: context.user._id })
+          .populate("recentArt")
+          .populate("favourites");
       }
       throw new AuthenticationError("You need to be logged in!");
     },
@@ -113,6 +111,17 @@ const resolvers = {
           "You must be logged in to perform this action"
         );
       }
+
+      let productFound = await Product.findOne({ productName: productName });
+      if (productFound) {
+        const productUpdate = await Product.findOneAndUpdate(
+          { productName: productName },
+          { imageUrl: imageUrl, price: price },
+          { new: true }
+        );
+        return productUpdate;
+      }
+
       const product = await Product.create({
         productName,
         imageUrl,
@@ -133,8 +142,18 @@ const resolvers = {
         throw new Error("Something went wrong");
       }
     },
-    addProduct: async (parent, { productName, imageUrl, price }, context) => {
+    addProduct: async (parent, { productName, imageUrl, price }) => {
       try {
+        let productFound = await Product.findOne({ productName: productName });
+        if (productFound) {
+          const productUpdate = await Product.findOneAndUpdate(
+            { productName: productName },
+            { imageUrl: imageUrl, price: price },
+            { new: true }
+          );
+          return productUpdate;
+        }
+
         const product = await Product.create({
           productName,
           imageUrl,
@@ -143,6 +162,35 @@ const resolvers = {
         return product;
       } catch (err) {
         throw new Error("Something went wrong");
+      }
+    },
+    addFavourite: async (parent, { productName }, context) => {
+      if (!context.user) {
+        throw new AuthenticationError(
+          "You must be logged in to add favourites"
+        );
+      }
+      try {
+        let productFound = await Product.findOne({ productName: productName });
+
+        if (productFound) {
+          const user = await User.findOneAndUpdate(
+            { _id: context.user._id },
+            {
+              $addToSet: {
+                favourites: {
+                  _id: productFound._id,
+                },
+              },
+            },
+            { new: true }
+          ).populate("favourites.product");
+
+          return user;
+        }
+      } catch (err) {
+        console.error(err);
+        throw new Error("Failed to add favorite product");
       }
     },
   },

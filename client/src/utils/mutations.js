@@ -61,3 +61,15 @@ export const SAVE_PRODUCT = gql`
     }
   }
 `;
+
+export const ADD_FAVOURITE = gql`
+  mutation AddFavourite($productName: String!) {
+    addFavourite(productName: $productName) {
+      username
+      email
+      favourites {
+        productName
+      }
+    }
+  }
+`;

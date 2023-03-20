@@ -8,6 +8,7 @@ const typeDefs = gql`
     password: String
     orders: [Order]!
     recentArt: [Product]!
+    favourites: [Product]!
   }
 
   type Product {
@@ -15,13 +16,6 @@ const typeDefs = gql`
     productName: String
     imageUrl: String
     price: Int
-  }
-
-  type Category {
-    _id: ID
-    name: String
-    createdAt: String
-    products: [Product]!
   }
 
   type Order {
@@ -46,8 +40,6 @@ const typeDefs = gql`
   type Query {
     users: [User]
     user(username: String!): User
-    categories: [Category]
-    category(name: String!): Category
     me: User
     products: [Product]
     product(productId: ID!): Product
@@ -68,6 +60,7 @@ const typeDefs = gql`
     checkout(amount: Int): Payment
     addRecentArt(productName: String!, imageUrl: String!, price: Int!): Product!
     addProduct(productName: String!, imageUrl: String!, price: Int): Product!
+    addFavourite(productName: String!): User!
   }
 `;
 
