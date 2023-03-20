@@ -60,8 +60,6 @@ const Home = () => {
       Math.random() < 0.5 ? adjectives[randomIndex] : nouns[randomIndex];
 
     const newArtName = `${randomWord} ${input}`;
-    //set loading true
-    setLoading(true);
     axios
       .post(
         "https://api.openai.com/v1/images/generations",

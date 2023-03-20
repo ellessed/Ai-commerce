@@ -74,7 +74,7 @@ const resolvers = {
           //find a user that has the favourite _id and the logged in user._id
           const user = await User.findOne({
             favourites: favourite._id,
-            userId: context.user._id
+            userId: context.user._id,
           });
           //if a user is found
           if (user) {
@@ -220,10 +220,10 @@ const resolvers = {
         ///find a product with the product name passed
         let productFound = await Product.findOne({ productName: productName });
 
-        if (!product) {
+        if (!productFound) {
           throw new Error("Product not found");
         }
-       //create a nwe favourite
+        //create a nwe favourite
         const favourite = await Favourite.create({
           productId: productFound._id,
           isFavourite: true,
@@ -284,7 +284,7 @@ const resolvers = {
 
         await user.save();
         await favourite.remove();
-        
+
         return user;
       } catch (err) {
         console.error(err);
