@@ -8,25 +8,25 @@ const Footer = () => {
 
       <ul class="social-media-list">
   <li>
-    <a href="https://www.instagram.com/your-username" target="_blank">
+    <a href="https://www.instagram.com/" target="_blank">
       <i class="fab fa-instagram"></i>
       Instagram
     </a>
   </li>
   <li>
-    <a href="https://twitter.com/your-username" target="_blank">
+    <a href="https://twitter.com/" target="_blank">
       <i class="fab fa-twitter"></i>
       Twitter
     </a>
   </li>
   <li>
-    <a href="https://www.facebook.com/your-username" target="_blank">
+    <a href="https://www.facebook.com/" target="_blank">
       <i class="fab fa-facebook"></i>
       Facebook
     </a>
   </li>
   <li>
-    <a href="https://github.com/your-username" target="_blank">
+    <a href="https://github.com/ellessed/Ai-commerce" target="_blank">
       <i class="fab fa-github"></i>
       GitHub
     </a>

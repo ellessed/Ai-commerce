@@ -131,8 +131,8 @@ const Home = () => {
     <>
       <div className="home-container">
         <div className="left-section">
-          <h2 className="search-h">Search for the art you want to see!</h2>
-          <div className="search-section">
+          <h2 className="search-h">Search for art you want to see!</h2>
+          <div className="search-containter">
             <input className="inputSearch" type="text" onChange={onInputChange} placeholder="Search" />
             <button className="searchButton" onClick={onButtonSubmit}>
               <FaSearch className="w-6 h-6 text-gray-400 search-icon" />
@@ -195,6 +195,9 @@ const Home = () => {
             <button className="cartButton" onClick={onAddToCart}>Add to Cart</button>
           </div>
         </Carousel>
+        </div>
+
+        <div>
         <br /> {/* Add a page break here */}
         <GalleryGrid />
       </div>

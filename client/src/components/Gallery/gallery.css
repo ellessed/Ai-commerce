@@ -1,0 +1,32 @@
+.gallery-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.gallery-h {
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    margin: auto;
+    font-family: var(--h-font);
+    font-size: 40px;
+    letter-spacing: 1px;
+    margin-bottom: 30px;
+}
+
+.card-body {
+    color: var(--dark);
+    font-family: var(--b-font);
+}
+
+.card-title {
+    font-size: 20px;
+}
+
+.card-text {
+    font-size: 15px;
+}
+
+.card-title:hover {
+    cursor: pointer;
+}

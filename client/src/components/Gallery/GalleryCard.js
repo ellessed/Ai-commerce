@@ -1,3 +1,5 @@
+import "../Gallery/gallery.css";
+
 const GalleryCard = (props) => {
   const { title, description, image } = props.gallery;
   console.log(props);
@@ -7,6 +9,7 @@ const GalleryCard = (props) => {
       <div className="card-body">
         <h5 className="card-title">{title}</h5>
         <p className="card-text">{description}</p>
+        <button className="cartButton">Add to Cart</button>
       </div>
     </div>
   );

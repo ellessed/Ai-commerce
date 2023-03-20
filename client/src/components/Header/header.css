@@ -12,6 +12,10 @@
     Margin-top: 10px;
 }
 
+.logo-section:hover{
+        cursor: pointer;
+}
+
 .logo {
     height: 60px;
 }
