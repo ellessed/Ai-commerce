@@ -26,7 +26,7 @@ AS AN user I want to be able to search for AI generatied images. THEN I WANT to 
 
 ### Visit The Deployed Page
 
-[Click Here to Visit the Heroku Page]()
+[Click Here to Visit the Heroku Page](https://ai-commerce-app.herokuapp.com/)
 
 ### Visit The GitHub Repo
 
